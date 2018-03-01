@@ -104,7 +104,7 @@ StyledDrawer.propTypes = {
   temporary: PropTypes.bool.isRequired,
 };
 
-export const Drawer = ({
+const Drawer = ({
   open,
   children,
   handleRequestClose,
