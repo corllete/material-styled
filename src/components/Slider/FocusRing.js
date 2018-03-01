@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const FocusRingComponent = props => (
@@ -6,6 +7,15 @@ const FocusRingComponent = props => (
     {props.children}
   </div>
 );
+
+FocusRingComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
+
+FocusRingComponent.defaultProps = {
+  children: null,
+};
 
 const getFocusSize = props => (props.navigatingWithKeys ? props.theme.slider.sizes.focusHalo : 0);
 
@@ -26,5 +36,14 @@ const FocusRing = styled(FocusRingComponent)`
   border-radius: 50%;
   flex-shrink: 0;
 `;
+
+FocusRing.propTypes = {
+  navigatingWithKeys: PropTypes.bool,
+  atMin: PropTypes.bool.isRequired,
+};
+
+FocusRing.defaultProps = {
+  navigatingWithKeys: true,
+};
 
 export default FocusRing;

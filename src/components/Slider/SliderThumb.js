@@ -1,20 +1,28 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import FocusRing from './FocusRing';
 import Thumb from './Thumb';
 import SliderDisabledWrapper from './SliderDisabledWrapper';
 
 class SliderThumbComponent extends PureComponent {
+  static propTypes = {
+    disabled: PropTypes.bool,
+    atMin: PropTypes.bool.isRequired,
+    handleMouseMove: PropTypes.func.isRequired,
+    increment: PropTypes.func.isRequired,
+    decrement: PropTypes.func.isRequired,
+    className: PropTypes.string.isRequired,
+  }
+
+  static defaultProps = {
+    disabled: false,
+  }
+
   state = {
     navigatingWithKeys: false,
     dragging: false,
   };
-
-  handleClick = (event) => {
-    event.stopPropagation();
-    if (this.props.disabled) return;
-    this.thumb && this.thumb.focus();
-  }
 
   onMouseDown = () => {
     if (this.props.disabled) return;
@@ -43,11 +51,18 @@ class SliderThumbComponent extends PureComponent {
     }
   }
 
-  enableKeys = cb => this.setState({ navigatingWithKeys: true }, cb);
-
   getThumb = (ref) => {
     this.thumb = ref;
   }
+
+  enableKeys = cb => this.setState({ navigatingWithKeys: true }, cb);
+
+  handleClick = (event) => {
+    event.stopPropagation();
+    if (this.props.disabled) return;
+    if (this.thumb) this.thumb.focus();
+  }
+
 
   handleBlur = () => {
     this.setState({ navigatingWithKeys: false });
@@ -60,7 +75,7 @@ class SliderThumbComponent extends PureComponent {
       <div ref={this.getThumb} className={this.props.className}>
         <SliderDisabledWrapper disabled={disabled} dragging={dragging}>
           <Thumb
-            tabIndex="1"
+            tabIndex="0"
             className="styled-material-thumb"
             onMouseDown={this.onMouseDown}
             onClick={this.handleClick}
@@ -68,8 +83,7 @@ class SliderThumbComponent extends PureComponent {
             onBlur={this.handleBlur}
             dragging={dragging}
             atMin={atMin}
-            disabled={disabled}
-          >
+            disabled={disabled}>
             <FocusRing navigatingWithKeys={navigatingWithKeys} atMin={atMin} />
           </Thumb>
         </SliderDisabledWrapper>

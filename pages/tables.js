@@ -1,5 +1,6 @@
+import React from 'react';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
-import { Table } from '../src/components/Table';
+import Table from '../src/components/Table';
 
 const fields = [
   {
@@ -54,21 +55,18 @@ const Tables = () => (
       <Table
         fields={fields}
         data={data}
-        header="Table header"
-      />
+        header="Table header" />
       <h2>Fullwidth table</h2>
       <Table
         fullWidth
         fields={fields}
         data={data}
-        header="Table header"
-      />
+        header="Table header" />
       <h2>Table with column style override</h2>
       <StyledTable
         fields={fields}
         data={data}
-        header="Table header"
-      />
+        header="Table header" />
     </div>
   </MaterialThemeProvider>
 );

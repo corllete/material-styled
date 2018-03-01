@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import SliderThumb from './SliderThumb';
@@ -19,11 +20,31 @@ const getPixelPerValue = (min, max, width) => {
 
 
 class SliderTrackComponent extends PureComponent {
+  static propTypes = {
+    min: PropTypes.number.isRequired,
+    max: PropTypes.number.isRequired,
+    step: PropTypes.node.isRequired,
+    disabled: PropTypes.bool,
+    continuous: PropTypes.bool,
+    value: PropTypes.number.isRequired,
+    setValue: PropTypes.func.isRequired,
+    increment: PropTypes.func,
+    decrement: PropTypes.func,
+    className: PropTypes.string.isRequired,
+  }
+
+  static defaultProps = {
+    continuous: false,
+    disabled: false,
+    increment: null,
+    decrement: null,
+  }
+
   state = {
     pixelsPerValue: null,
     valuePerPixel: null,
     cursorXAtMin: null,
-    useTransitions: false,
+    // useTransitions: false,
     focused: false,
     width: null,
   }
@@ -64,7 +85,10 @@ class SliderTrackComponent extends PureComponent {
     const valueFromMin = pixelsFromMin * valuePerPixel;
     const continuousNextValue = valueFromMin + min;
 
-    if (continuous) return this.props.setValue(continuousNextValue);
+    if (continuous) {
+      this.props.setValue(continuousNextValue);
+      return;
+    }
 
     const actualNumberSteps = (continuousNextValue - value) / step;
     const minimumSteps = Math.floor(actualNumberSteps);
@@ -106,17 +130,17 @@ class SliderTrackComponent extends PureComponent {
       && typeof valuePerPixel === 'number';
     const pixelsFromMin = (value - min) * (pixelsPerValue || 0);
     const atMin = min === value;
+    /* eslint-disable jsx-a11y/click-events-have-key-events */
+    /* eslint-disable jsx-a11y/no-static-element-interactions */
     return (
       <div
         onClick={this.handleClick}
         ref={this.setTrack}
-        className={`${this.props.className} smc-slider-track-wrapper`}
-      >
+        className={`${this.props.className} smc-slider-track-wrapper`}>
         <Trackline
           disabled={disabled}
           focused={focused}
-          atMin={atMin}
-        >
+          atMin={atMin}>
           {haveMeasuredWidth && (
             [
               <ValueTrack width={pixelsFromMin} key="slider-track-value-track">
@@ -128,8 +152,7 @@ class SliderTrackComponent extends PureComponent {
                 handleMouseMove={this.handleClick}
                 disabled={this.props.disabled}
                 atMin={atMin}
-                key="slider-track-slider-thumb"
-              />,
+                key="slider-track-slider-thumb" />,
             ]
           )}
         </Trackline>

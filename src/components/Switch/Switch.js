@@ -1,19 +1,39 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import SwitchTrack from './SwitchTrack';
 import SwitchThumb from './SwitchThumb';
 
 class SwitchComponent extends PureComponent {
+  static propTypes = {
+    disabled: PropTypes.bool,
+    light: PropTypes.bool,
+    dark: PropTypes.bool,
+    raised: PropTypes.bool,
+    on: PropTypes.bool,
+    onChange: PropTypes.func,
+  }
+
+  static defaultProps = {
+    disabled: false,
+    onChange: null,
+    light: true,
+    dark: false,
+    raised: false,
+    on: false,
+  }
+
   state = {
-    on: true,
+    on: this.props.on,
   };
 
   handleOnClick = () => {
     if (!this.props.disabled) {
-      this.setState(prevState => ({
-        on: !prevState.on,
-      }));
-      this.props.onChange && this.props.onChange();
+      this.setState((prevState) => {
+        const on = !prevState.on;
+        if (this.props.onChange) this.props.onChange(on);
+        return { on };
+      });
     }
   }
 

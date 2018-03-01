@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Row from './Row';
 import Datum from './Datum';
@@ -21,7 +22,7 @@ import Header from './Header';
  * - inline menus
  * - alternate headers
  */
-const Table = props => (
+const TableComponent = props => (
   <div className={`smc-table-wrapper ${props.className}`}>
     {props.header && <Header>{props.header}</Header>}
     <table className="smc-table-table">
@@ -33,8 +34,7 @@ const Table = props => (
               column={key}
               numerical={numerical}
               first={i === 0}
-              last={i === props.fields.length - 1}
-            >
+              last={i === props.fields.length - 1}>
               {label}
             </Title>
           ))}
@@ -49,8 +49,7 @@ const Table = props => (
                 column={key}
                 numerical={numerical}
                 first={i === 0}
-                last={i === props.fields.length - 1}
-              >
+                last={i === props.fields.length - 1}>
                 {datum[key]}
               </Datum>
             ))}
@@ -61,7 +60,22 @@ const Table = props => (
   </div>
 );
 
-export default styled(Table)`
+TableComponent.propTypes = {
+  header: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  fields: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    numerical: PropTypes.bool,
+    key: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  })).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+TableComponent.defaultProps = {
+  header: '',
+
+};
+
+const Table = styled(TableComponent)`
   ${props => (props.fullWidth ? 'width: 100%' : '')};
 
   > .smc-table-table {
@@ -70,3 +84,15 @@ export default styled(Table)`
     border-spacing: 40px;
   }
 `;
+
+Table.propTypes = {
+  ...TableComponent.propTypes,
+  fullWidth: PropTypes.bool,
+};
+
+Table.defaultProps = {
+  ...TableComponent.defaultProps,
+  fullWidth: false,
+};
+
+export default Table;

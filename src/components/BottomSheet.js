@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import classNames from 'classnames';
 import elevation from '../mixins/elevation';
-import { Portal } from '../components/Portal';
+import Portal from '../components/Portal';
 
 const bottomSheetSizing = css`
   height: 0;
@@ -23,6 +24,19 @@ const BaseBottomSheet = (props) => {
   );
 };
 
+BaseBottomSheet.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string.isRequired,
+  open: PropTypes.bool,
+  attachment: PropTypes.string,
+};
+
+BaseBottomSheet.defaultProps = {
+  children: null,
+  open: false,
+  attachment: 'bottom',
+};
+
 const StyledBottomSheet = styled(BaseBottomSheet)`
   background-color: white;
   ${props => props.modal && elevation(16)}
@@ -37,11 +51,11 @@ const StyledBottomSheet = styled(BaseBottomSheet)`
   flex-direction: row;
   box-sizing: border-box;
   touch-action: none;
-  ${props => props.modal && `z-index: 5`}
+  ${props => props.modal && 'z-index: 5'}
 
   &.bottom {
     transform: translateY(100%);
-    ${props => !props.modal && `border-top: 1px solid rgba(0,0,0,0.35);`}
+    ${props => !props.modal && 'border-top: 1px solid rgba(0,0,0,0.35);'}
   }
 
   &.open {
@@ -77,7 +91,17 @@ export const BottomSheet = ({
     )} />
 );
 
+
+BottomSheet.propTypes = {
+  children: PropTypes.node,
+  modal: PropTypes.bool,
+  open: PropTypes.bool,
+  attachment: PropTypes.string,
+  handleRequestClose: PropTypes.func,
+};
+
 BottomSheet.defaultProps = {
+  children: null,
   modal: false,
   open: false,
   attachment: 'bottom',

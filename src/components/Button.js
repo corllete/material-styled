@@ -80,7 +80,7 @@ const Button = styled.button.attrs({
   ${props => props.accent && accent}
   ${props => props.primary && primary}
   ${props => props.raised && raised}
-  ${props => props.compact && `padding: 0 8px;`}
+  ${props => props.compact && 'padding: 0 8px;'}
   ${props => props.disabled && `
     color: rgba(0, 0, 0, .26);
     cursor: default;

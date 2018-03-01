@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const DatumComponent = ({ children, className, column }) => (
@@ -6,6 +7,16 @@ const DatumComponent = ({ children, className, column }) => (
     {children}
   </td>
 );
+
+DatumComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  column: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+};
+
+DatumComponent.defaultProps = {
+  children: null,
+};
 
 const Datum = styled(DatumComponent)`
   font-size: 12px;

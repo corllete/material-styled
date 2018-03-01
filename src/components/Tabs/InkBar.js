@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const InkBarContainer = styled.div`
@@ -12,11 +13,24 @@ const InkBarContainer = styled.div`
 
 const InkBar = ({ numTabs, selectedIndex, tabWidth, inkbarColor }) => (
   <InkBarContainer
-    className='smc-tab-bar-scroller'
+    className="smc-tab-bar-scroller"
     numTabs={numTabs}
     selectedIndex={selectedIndex}
-    tabWidth={tabWidth || 0}
+    tabWidth={tabWidth}
     inkbarColor={inkbarColor} />
 );
+
+InkBar.propTypes = {
+  numTabs: PropTypes.number.isRequired,
+  selectedIndex: PropTypes.number,
+  tabWidth: PropTypes.number,
+  inkbarColor: PropTypes.string,
+};
+
+InkBar.defaultProps = {
+  selectedIndex: 0,
+  inkbarColor: '',
+  tabWidth: 0,
+};
 
 export default InkBar;

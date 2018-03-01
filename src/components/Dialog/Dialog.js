@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import elevation from '../../mixins/elevation';
-import { Portal } from '../Portal';
+import Portal from '../Portal';
+
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 
 /*
  * The dialog is controlled by this.props.open, *but* the dialog also closes when
@@ -10,13 +14,16 @@ import { Portal } from '../Portal';
  */
 class DialogComponent extends Component {
   state = {
-    open: Boolean(this.props.open),
+    open: this.props.open,
   };
 
   componentWillReceiveProps(nextProps) {
     const nextOpen = Boolean(nextProps.open);
     const prevOpen = Boolean(this.props.open);
-    if (prevOpen !== nextOpen) return this.setState({ open: nextOpen });
+    if (prevOpen !== nextOpen) {
+      this.setState({ open: nextOpen });
+      return;
+    }
     if (nextOpen && !this.state.open) this.openModal();
   }
 
@@ -28,7 +35,7 @@ class DialogComponent extends Component {
 
   renderContents = () => (
     <div className={`${this.props.className} smc-dialog`} onClick={this.closeModal}>
-      <div className='smc-dialog-surface' onClick={this.stopPropagation}>
+      <div className="smc-dialog-surface" onClick={this.stopPropagation}>
         {this.props.children}
       </div>
     </div>
@@ -39,11 +46,20 @@ class DialogComponent extends Component {
       <Portal
         open={this.state.open}
         mode="overlay"
-        renderContents={this.renderContents}
-      />
+        renderContents={this.renderContents} />
     );
   }
 }
+
+DialogComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  open: PropTypes.bool,
+};
+
+DialogComponent.defaultProps = {
+  open: false,
+};
 
 export default styled(DialogComponent)`
   width: 100%;

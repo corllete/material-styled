@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 class Checkbox extends PureComponent {
@@ -8,34 +9,36 @@ class Checkbox extends PureComponent {
   };
 
   handleInputChange = (e) => {
-    const checked = e.target.checked;
+    const { checked } = e.target;
     this.setState({ indeterminate: false, checked });
 
     if (this.props.onChange) {
       this.props.onChange(e);
     }
+
+    if (this.props.onChangeValue) {
+      this.props.onChangeValue(checked, this.props.name);
+    }
   };
 
   render() {
-    const { primary, disabled, checked: checkedProp, value, id } = this.props;
+    const { primary, disabled, checked: checkedProp, value, name } = this.props;
     const { indeterminate } = this.state;
     // determine if checkbox is controlled or uncontrolled
-    const checked = checkedProp !== undefined ? checkedProp : this.state.checked;
+    const checked = checkedProp !== null ? checkedProp : this.state.checked;
 
     return (
       <CheckboxContainer
         className="smc-checkbox-container"
         primary={primary}
         disabled={disabled}
-        checked={checked}
-      >
+        checked={checked}>
         <CheckboxBackground
           className="smc-checkbox-background"
           primary={primary}
           checked={checked}
           disabled={disabled}
-          indeterminate={indeterminate}
-        >
+          indeterminate={indeterminate}>
           {indeterminate && <IndeterminateMark className="smc-checkbox-indeterminate-mark" />}
           {checked && !indeterminate && <CheckMark className="smc-checkbox-check-mark" />}
         </CheckboxBackground>
@@ -44,12 +47,35 @@ class Checkbox extends PureComponent {
           disabled={disabled}
           checked={checked}
           value={value}
-          id={id}
-        />
+          name={name} />
       </CheckboxContainer>
     );
   }
 }
+
+Checkbox.propTypes = {
+  checked: PropTypes.bool,
+  defaultChecked: PropTypes.bool,
+  indeterminate: PropTypes.bool,
+  primary: PropTypes.bool,
+  disabled: PropTypes.bool,
+  value: PropTypes.oneOfType(PropTypes.bool, PropTypes.string),
+  name: PropTypes.string,
+  onChange: PropTypes.func,
+  onChangeValue: PropTypes.func,
+};
+
+Checkbox.defaultProps = {
+  checked: null,
+  defaultChecked: false,
+  indeterminate: false,
+  primary: false,
+  disabled: false,
+  value: '',
+  name: 'checkbox',
+  onChange: null,
+  onChangeValue: null,
+};
 
 const CheckboxContainer = styled.div`
   display: inline-block;
@@ -100,6 +126,7 @@ const CheckboxBackground = styled.div`
       else if (props.primary) return props.theme.primary;
       return props.theme.accent;
     }
+    return 'initial';
   }};
   align-items: center;
   justify-content: center;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 const SwitchTrackComponent = props => (
@@ -6,6 +7,15 @@ const SwitchTrackComponent = props => (
     {props.children}
   </div>
 );
+
+SwitchTrackComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
+
+SwitchTrackComponent.defaultProps = {
+  children: null,
+};
 
 const lightOn = css`
   background-color: rgba(0, 150, 136, .5);
@@ -49,5 +59,17 @@ const SwitchTrack = styled(SwitchTrackComponent)`
   ${props => props.dark && props.disabled && darkDisabled}
 
 `;
+
+SwitchTrack.propTypes = {
+  light: PropTypes.bool,
+  dark: PropTypes.bool,
+  on: PropTypes.bool,
+};
+
+SwitchTrack.defaultProps = {
+  light: false,
+  dark: false,
+  on: false,
+};
 
 export default SwitchTrack;

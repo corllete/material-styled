@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { keyframes } from 'styled-components';
 
 const rippleAnimation = keyframes`
@@ -30,6 +31,16 @@ const withRipple = (ComposedComponent) => {
     }
   `;
   return class RippleEnabledComponent extends Component {
+    static propTypes = {
+      children: PropTypes.node,
+    }
+
+    static defaultProps = {
+      children: null,
+    }
+
+    setRef = (rippleContainer) => { this.rippleContainer = rippleContainer; }
+
     /**
      * When a button click occurs, add a span element that will receive
      * the styling to create the 'ripple' effect and animate it moving
@@ -65,7 +76,7 @@ const withRipple = (ComposedComponent) => {
       return (
         <RippledComponent {...this.props} onMouseDown={this.handleClick} onMouseUp={this.reset}>
           {this.props.children}
-          <div ref={(rippleContainer) => {this.rippleContainer = rippleContainer;}} className="ripple-container" />
+          <div ref={this.setRef} className="ripple-container" />
         </RippledComponent>
       );
     }

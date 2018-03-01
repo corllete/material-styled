@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Avatar } from '../Avatar';
-import { Divider } from '../Divider';
+import Avatar from '../Avatar';
+import Divider from '../Divider';
 
 const ListItemComponent = ({ className, children, leftAvatar, avatarSize, withDivider }) => (
   <li className={className}>
@@ -12,10 +13,25 @@ const ListItemComponent = ({ className, children, leftAvatar, avatarSize, withDi
     )}
     <div className="smc-list-content">
       {children}
-      {Boolean(withDivider) && <Divider />}
+      {withDivider && <Divider />}
     </div>
   </li>
 );
+
+ListItemComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  leftAvatar: PropTypes.string,
+  avatarSize: PropTypes.number,
+  withDivider: PropTypes.bool,
+};
+
+ListItemComponent.defaultProps = {
+  leftAvatar: '',
+  avatarSize: null,
+  withDivider: false,
+  children: null,
+};
 
 const ListItem = styled(ListItemComponent)`
   position: relative;

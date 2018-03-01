@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const DialogFooterComponent = ({ className, children }) => (
@@ -6,6 +7,11 @@ const DialogFooterComponent = ({ className, children }) => (
     {children}
   </div>
 );
+
+DialogFooterComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 const DialogFooter = styled(DialogFooterComponent)`
   display: flex;

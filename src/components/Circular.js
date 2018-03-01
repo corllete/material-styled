@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Circular = styled.div`
+const Circular = styled.div`
   position: relative;
   display: flex;
   align-items: center;
@@ -11,3 +11,5 @@ export const Circular = styled.div`
   border-radius: 50%;
   overflow: hidden;
 `;
+
+export default Circular;

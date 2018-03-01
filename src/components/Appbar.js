@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import typography from '../mixins/typography';
 import elevation from '../mixins/elevation';
@@ -16,6 +17,11 @@ const TitleComponent = ({ className, children }) => (
   </h1>
 );
 
+TitleComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
 const Title = styled(TitleComponent)`
   margin: 0 12px;
    ${typography('title')}
@@ -25,14 +31,23 @@ class AppbarComponent extends PureComponent {
   render() {
     return (
       <div
-        className={`${this.props.className} smc-appbar-container`}
-      >
+        className={`${this.props.className} smc-appbar-container`}>
         {this.props.navIcon ? <this.props.navIcon /> : <NavIconPlaceholder />}
         <Title>{`${this.props.title}`}</Title>
       </div>
     );
   }
 }
+
+AppbarComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  navIcon: PropTypes.func,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+};
+
+AppbarComponent.defaultProps = {
+  navIcon: null,
+};
 
 const Appbar = styled(AppbarComponent)`
   top: 0;

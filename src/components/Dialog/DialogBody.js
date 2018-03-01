@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const DialogBodyComponent = ({ className, children }) => (
@@ -6,6 +7,11 @@ const DialogBodyComponent = ({ className, children }) => (
     {children}
   </div>
 );
+
+DialogBodyComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 const DialogBody = styled(DialogBodyComponent)`
   text-align: left;

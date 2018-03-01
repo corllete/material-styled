@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-export class Shift extends Component {
+class Shift extends Component {
+  static propTypes = {
+    direction: PropTypes.string.isRequired,
+    open: PropTypes.bool.isRequired,
+    className: PropTypes.string,
+    children: PropTypes.node,
+  }
+
+  static defaultProps = {
+    className: '',
+    children: null,
+  }
+
   componentDidMount() {
     document.body.classList.add('shift');
   }
@@ -25,3 +38,5 @@ export class Shift extends Component {
     );
   }
 }
+
+export default Shift;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const HeaderComponent = ({ children, className }) => (
@@ -6,6 +7,11 @@ const HeaderComponent = ({ children, className }) => (
     {children}
   </div>
 );
+
+HeaderComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+};
 
 const Header = styled(HeaderComponent)`
   font-size: 20px;

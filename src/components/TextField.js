@@ -1,59 +1,155 @@
-/* eslint-disable no-confusing-arrow */
+/* eslint-disable no-confusing-arrow1 */
 import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 
+// string or result of css`props => result` call
+const styleType = PropTypes.oneOfType([PropTypes.string, PropTypes.array]);
+
+const textOrNodeType = PropTypes.oneOfType([PropTypes.string, PropTypes.node]);
+
 class TextFieldComponent extends PureComponent {
+  static propTypes = {
+    /* Generic */
+    defaultValue: PropTypes.string,
+    required: PropTypes.bool,
+    disabled: PropTypes.bool,
+    textarea: PropTypes.bool,
+    name: PropTypes.string,
+    value: PropTypes.string,
+
+    /* textarea = true only */
+    rows: PropTypes.number,
+    autoFocus: PropTypes.bool,
+    multiline: PropTypes.bool,
+
+    /* Generic style */
+    inputStyle: styleType,
+
+    /* Floating text related */
+    floatingLabelText: textOrNodeType,
+    floatingLabelStyle: styleType,
+    floatingLabelErrorStyle: styleType,
+
+    /* Hint related */
+    hintText: textOrNodeType,
+    hintTextStyle: styleType,
+
+    /* Helper text related */
+    helperText: textOrNodeType,
+    helperTextStyle: styleType,
+    helperTextPersistent: PropTypes.bool,
+
+    /* Focus */
+    focusDisabled: PropTypes.bool,
+    underlineFocusStyle: styleType,
+
+    /* Prefix/suffix */
+    prefix: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    suffix: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+
+    /* Callbacks */
+    onChange: PropTypes.func,
+    onChangeValue: PropTypes.func,
+    onFocus: PropTypes.func,
+    onBlur: PropTypes.func,
+    validator: PropTypes.func,
+
+    /* Error related */
+    error: PropTypes.bool,
+    errorText: textOrNodeType,
+    errorTextStyle: styleType,
+
+    /* System */
+    className: PropTypes.string.isRequired,
+  }
+
+  static defaultProps = {
+    defaultValue: '',
+    required: false,
+    disabled: false,
+    textarea: false,
+    rows: 1,
+    autoFocus: false,
+    multiline: false,
+    name: 'text',
+    value: '',
+    inputStyle: '',
+    floatingLabelText: '',
+    floatingLabelStyle: '',
+    floatingLabelErrorStyle: '',
+    hintText: '',
+    hintTextStyle: '',
+    helperText: '',
+    helperTextStyle: '',
+    helperTextPersistent: false,
+    focusDisabled: false,
+    underlineFocusStyle: '',
+    suffix: null,
+    prefix: null,
+    onChange: null,
+    onChangeValue: null,
+    onFocus: null,
+    onBlur: null,
+    validator: null,
+    error: false,
+    errorText: null,
+    errorTextStyle: '',
+  }
+
   state = {
-    text: this.props.defaultValue || '',
+    text: this.props.defaultValue,
     focus: false,
-    error: this.props.error || false,
-    hasBeenFocused: false,
+    error: this.props.error,
+    // hasBeenFocused: false,
     height: '100%',
   };
-  
-  textArea = null;
 
   onChange = (e) => {
-    this.props.onChange && this.props.onChange(e);
     const text = e.target.value;
+    if (this.props.onChange) this.props.onChange(e);
+    if (this.props.onChangeValue) this.props.onChangeValue(text, this.props.name);
     const isInvalid = this.props.validator && !this.props.validator(text);
     const isEmptyButRequired = this.props.required ? !e.target.value : false;
     const newHeight = this.props.textarea ? this.textArea.scrollHeight : '';
-    
+
     this.setState({
       text,
       error: this.props.error || isInvalid || isEmptyButRequired,
-      height: !this.props.multiline || this.textArea.value === '' ? '100%' : newHeight,
+      height: !this.props.multiline || (this.textArea || {}).value === '' ? '100%' : newHeight,
     });
   };
 
   onFocus = (e) => {
-    this.props.onFocus && this.props.onFocus(e);
-    this.setState({ focus: true, hasBeenFocused: true });
+    if (this.props.onFocus) this.props.onFocus(e);
+    this.setState({ focus: true /* hasBeenFocused: true */ });
   };
 
   onBlur = (e) => {
-    this.props.onBlur && this.props.onBlur(e);
+    if (this.props.onBlur) this.props.onBlur(e);
     this.setState({ focus: false });
   };
+
+  setRef = (ref) => { this.textArea = ref; }
+
+  textArea = null;
 
   render() {
     const hasError = Boolean(this.state.error || this.props.error || this.props.errorText);
     return (
       <div className={`${this.props.className} smc-text-field-container`}>
-        <Suffix>{this.props.suffix}</Suffix>
-        <Prefix>{this.props.prefix}</Prefix>
+        {this.props.suffix && <Suffix>{this.props.suffix}</Suffix>}
+        {this.props.prefix && <Prefix>{this.props.prefix}</Prefix>}
         <FloatingLabel
-          className={'smc-text-field-floating-label'}
+          className="smc-text-field-floating-label"
           error={hasError}
           hasPrefix={!!this.props.prefix}
           focus={this.state.focus}
           floatingLabelStyle={
             hasError ? this.props.floatingLabelErrorStyle : this.props.floatingLabelStyle
           }
-          floating={this.state.focus || this.props.hintText || this.state.text.length}
-        >
-          {this.props.floatingLabelText || ''}
+          floating={this.state.focus || this.props.hintText || this.state.text.length}>
+          {this.props.floatingLabelText}
           {this.props.required ? '*' : ''}
           {/* <RequiredStar
             hasBeenFocused={this.state.hasBeenFocused}
@@ -61,41 +157,37 @@ class TextFieldComponent extends PureComponent {
             requiredStarStyle={this.props.requiredStarStyle} /> */}
         </FloatingLabel>
         <HintText
-          className={'smc-text-field-hint-text'}
+          className="smc-text-field-hint-text"
           hintTextStyle={this.props.hintTextStyle}
           hasPrefix={this.props.prefix}
           error={hasError}
-          show={!this.props.defaultValue && !this.state.text.length && !this.props.value}
-        >
+          show={!this.props.defaultValue && !this.state.text.length && !this.props.value}>
           {this.props.hintText}
         </HintText>
         {this.props.helperText && (
           <HelperText
-            className={'smc-text-field-helper-text'}
+            className="smc-text-field-helper-text"
             helperTextStyle={this.props.helperTextStyle}
-            show={!this.state.error && (this.props.helperTextPersistent ? true : this.state.focus)}
-          >
+            show={!this.state.error && (this.props.helperTextPersistent ? true : this.state.focus)}>
             {this.props.helperText}
           </HelperText>
         )}
         <ErrorText
           show={hasError}
-          className={'smc-text-field-error-text'}
-          errorTextStyle={this.props.errorTextStyle}
-        >
+          className="smc-text-field-error-text"
+          errorTextStyle={this.props.errorTextStyle}>
           {this.props.errorText}
         </ErrorText>
         <UnderlineFocus
           disabled={this.props.focusDisabled}
-          className={'smc-text-field-underline-focus'}
+          className="smc-text-field-underline-focus"
           underlineFocusStyle={this.props.underlineFocusStyle}
           focus={this.state.focus}
-          error={hasError}
-        />
+          error={hasError} />
         {this.props.textarea
           ? (
             <Area
-              rows={this.props.rows || 1}
+              rows={this.props.rows}
               hasPrefix={!!this.props.prefix}
               hasSuffix={!!this.props.suffix}
               inputStyle={this.props.inputStyle}
@@ -106,9 +198,9 @@ class TextFieldComponent extends PureComponent {
               onChange={this.onChange}
               onFocus={this.onFocus}
               onBlur={this.onBlur}
-              className={'smc-text-field-area'}
-              innerRef={(ref) => {this.textArea = ref;}}
-            />
+              className="smc-text-field-area"
+              name={this.props.name}
+              innerRef={this.setRef} />
           )
           : (
             <Input
@@ -121,8 +213,8 @@ class TextFieldComponent extends PureComponent {
               onChange={this.onChange}
               onFocus={this.onFocus}
               onBlur={this.onBlur}
-              className={'smc-text-field-input'}
-            />
+              name={this.props.name}
+              className="smc-text-field-input" />
           )
         }
       </div>
@@ -175,6 +267,11 @@ const SuffixComponent = props => (
   <div className={`${props.className} smc-textfield-suffix`}>{props.children}</div>
 );
 
+SuffixComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
 const Suffix = styled(SuffixComponent)`
   position: absolute;
   bottom: 0;
@@ -185,6 +282,11 @@ const Suffix = styled(SuffixComponent)`
 const PrefixComponent = props => (
   <div className={`${props.className} smc-textfield-prefix`}>{props.children}</div>
 );
+
+PrefixComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 const Prefix = styled(PrefixComponent)`
   position: absolute;
@@ -266,14 +368,14 @@ const inputStyles = `
  * above
  */
 const Input = styled.input`${inputStyles}`.extend`
-  width: calc(100% - ${({ hasSuffix }) => hasSuffix ? 1 : 0}em);
+  width: calc(100% - ${({ hasSuffix }) => (hasSuffix ? 1 : 0)}em);
   color: ${primaryTextColor};
   padding-left: ${props => (props.hasPrefix ? '1em' : '0')};
   ${props => props.inputStyle};
 `;
 
 const Area = styled.textarea`${inputStyles}`.extend`
-  width: calc(100% - ${({ hasSuffix }) => hasSuffix ? 1 : 0}em);
+  width: calc(100% - ${({ hasSuffix }) => (hasSuffix ? 1 : 0)}em);
   height:  ${props => props.height - 4}px;
   color: ${primaryTextColor};
   padding-left: ${props => (props.hasPrefix ? '1em' : '0')};

@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { injectGlobal, css } from 'styled-components';
 import classNames from 'classnames';
 import elevation from '../mixins/elevation';
-import { Portal } from '../components/Portal';
+import Portal from '../components/Portal';
 
 const drawerSizing = css`
   width: 240px;
@@ -47,6 +48,19 @@ const BaseDrawer = (props) => {
   );
 };
 
+BaseDrawer.propTypes = {
+  className: PropTypes.string.isRequired,
+  open: PropTypes.bool,
+  attachment: PropTypes.oneOf(['left', 'right']),
+  children: PropTypes.node,
+};
+
+BaseDrawer.defaultProps = {
+  open: false,
+  attachment: 'left',
+  children: null,
+};
+
 const StyledDrawer = styled(BaseDrawer)`
   background-color: white;
   ${props => props.temporary && elevation(16)}
@@ -69,7 +83,7 @@ const StyledDrawer = styled(BaseDrawer)`
   &.left {
     left: 0;
     transform: translateX(-107%);
-    ${props => !props.temporary && `border-right: 1px solid rgba(0,0,0,0.35);`}
+    ${props => !props.temporary && 'border-right: 1px solid rgba(0,0,0,0.35);'}
   }
 
   &.right {
@@ -85,6 +99,10 @@ const StyledDrawer = styled(BaseDrawer)`
     transform: none;
   }
 `;
+
+StyledDrawer.propTypes = {
+  temporary: PropTypes.bool.isRequired,
+};
 
 export const Drawer = ({
   open,
@@ -102,18 +120,26 @@ export const Drawer = ({
       <StyledDrawer
         attachment={attachment}
         open={open}
-        temporary={temporary}
-      >
+        temporary={temporary}>
         {children}
       </StyledDrawer>
     )} />
 );
+
+Drawer.propTypes = {
+  temporary: PropTypes.bool,
+  open: PropTypes.bool,
+  attachment: PropTypes.oneOf(['left', 'right']),
+  handleRequestClose: PropTypes.func,
+  children: PropTypes.node,
+};
 
 Drawer.defaultProps = {
   temporary: false,
   open: false,
   attachment: 'left',
   handleRequestClose: () => {},
+  children: null,
 };
 
 export default Drawer;

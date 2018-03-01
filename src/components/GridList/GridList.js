@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const GridListComponent = ({ className, children }) => (
@@ -6,6 +7,15 @@ const GridListComponent = ({ className, children }) => (
     {children}
   </div>
 );
+
+GridListComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
+
+GridListComponent.defaultProps = {
+  children: null,
+};
 
 const GridList = styled(GridListComponent)`
   position: relative;

@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import SliderTrack from './SliderTrack';
 
@@ -11,26 +12,56 @@ const DEFAULT_MAX = 100;
 const DEFAULT_STEP = 1;
 
 class SliderComponent extends PureComponent {
+  static propTypes = {
+    initialValue: PropTypes.number,
+    min: PropTypes.number,
+    max: PropTypes.number,
+    step: PropTypes.node,
+    disabled: PropTypes.bool,
+    continuous: PropTypes.bool,
+    value: PropTypes.number,
+    className: PropTypes.string.isRequired,
+    handleValueChange: PropTypes.func,
+  }
+
+  static defaultProps = {
+    min: DEFAULT_MIN,
+    max: DEFAULT_MAX,
+    step: DEFAULT_STEP,
+    continuous: false,
+    disabled: false,
+    initialValue: null,
+    handleValueChange: null,
+    value: null,
+  }
+
   constructor(props) {
     super(props);
     const { min, max, initialValue, step } = props;
-    const actualMin = typeof min === 'number' ? min : DEFAULT_MIN;
-    const actualMax = typeof max === 'number' ? max : DEFAULT_MAX;
-    if (actualMax <= actualMin) throw new Error(`Slider minimum ${actualMin} exceeds maximum ${actualMax}`);
+    if (max <= min) throw new Error(`Slider minimum ${min} exceeds maximum ${max}`);
     const value = typeof initialValue === 'number'
       ? initialValue
-      : getAverage(actualMin, actualMax);
-    if (value < actualMin) throw new Error(`Slider value ${value} is less than minimum ${actualMin}`);
-    if (value > actualMax) throw new Error(`Slider value ${value} exceeds maximum ${actualMax}`);
+      : getAverage(min, max);
+    if (value < min) throw new Error(`Slider value ${value} is less than minimum ${min}`);
+    if (value > max) throw new Error(`Slider value ${value} exceeds maximum ${max}`);
     if (step === 0) throw new Error('Slider step cannot be 0');
-    const actualStep = step || DEFAULT_STEP;
-    if (typeof actualStep !== 'number') throw new Error(`Provided step ${step} is not a number`);
     this.state = {
-      min: actualMin,
-      max: actualMax,
-      step: Math.abs(actualStep),
+      min,
+      max,
+      step: Math.abs(step),
       value,
     };
+  }
+
+  setValue = (value) => {
+    const { min, max } = this.state;
+    let actualValue = value;
+    if (value < min) actualValue = min;
+    if (value > max) actualValue = max;
+    if (this.props.handleValueChange) {
+      this.props.handleValueChange(actualValue);
+    }
+    this.setState({ value: actualValue });
   }
 
   increment = () => {
@@ -45,16 +76,6 @@ class SliderComponent extends PureComponent {
     this.setValue(value - step);
   }
 
-  setValue = (value) => {
-    const { min, max } = this.state;
-    let actualValue = value;
-    if (value < min) actualValue = min;
-    if (value > max) actualValue = max;
-    if (this.props.handleValueChange) {
-      this.props.handleValueChange(actualValue);
-    }
-    this.setState({ value: actualValue });
-  }
 
   render() {
     const { min, max, step } = this.state;
@@ -73,8 +94,7 @@ class SliderComponent extends PureComponent {
           increment={this.increment}
           decrement={this.decrement}
           setValue={this.setValue}
-          disabled={this.props.disabled}
-        />
+          disabled={this.props.disabled} />
       </div>
     );
   }

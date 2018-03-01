@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import { Overlay } from './Overlay';
-import { Shift } from './Shift';
+import Shift from './Shift';
 
 let smcPortal;
 
-export class Portal extends Component {
-  defaultProps = {
+class Portal extends Component {
+  static propTypes = {
+    attachment: PropTypes.string,
+    open: PropTypes.bool.isRequired,
+    shift: PropTypes.bool,
+    onRequestClose: PropTypes.func.isRequired,
+    renderContents: PropTypes.func.isRequired,
+  }
+
+  static defaultProps = {
     shift: false,
-    direction: 'left',
+    attachment: 'left',
   };
 
   state = {
@@ -37,7 +46,7 @@ export class Portal extends Component {
   }
 
   componentWillUnmount() {
-    smcPortal && smcPortal.removeChild(this.el);
+    if (smcPortal) smcPortal.removeChild(this.el);
   }
 
   render() {
@@ -51,7 +60,9 @@ export class Portal extends Component {
         onClick={this.props.onRequestClose}>
         {this.props.renderContents()}
       </PortalContainer>,
-      this.el,
+      this.el
     );
   }
 }
+
+export default Portal;

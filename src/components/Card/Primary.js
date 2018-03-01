@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { Avatar } from '../Avatar';
+import Avatar from '../Avatar';
 import typography from '../../mixins/typography';
 
 const Title = styled.h1`
@@ -13,11 +14,20 @@ const Title = styled.h1`
   `}
 
   .primary & {
-    ${props => props.large && css `
+    ${props => props.large && css`
       padding-top: 8px;
     `}
   }
 `;
+
+Title.propTypes = {
+  className: PropTypes.string.isRequired,
+  large: PropTypes.bool,
+};
+
+Title.defaultProps = {
+  large: false,
+};
 
 const Subheader = styled.h2`
   ${typography('body1')}
@@ -33,15 +43,30 @@ const PrimaryComponent = ({ avatar, title, subheader, className, large }) => (
 
     <div className="smc-card-title-container">
       {title && (
-        <Title className={`card-title`} large={large}>{title}</Title>
+        <Title className="card-title" large={large}>{title}</Title>
       )}
       {subheader && (
-        <Subheader className={`card-subtitle`}>{subheader}</Subheader>
+        <Subheader className="card-subtitle">{subheader}</Subheader>
       )}
     </div>
 
   </section>
 );
+
+PrimaryComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  avatar: PropTypes.string,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  subheader: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  large: PropTypes.bool,
+};
+
+PrimaryComponent.defaultProps = {
+  avatar: null,
+  title: null,
+  subheader: null,
+  large: false,
+};
 
 const Primary = styled(PrimaryComponent)`
   padding: 16px;

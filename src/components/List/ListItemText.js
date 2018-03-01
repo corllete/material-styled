@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ListItemTextComponent = ({ className, primary, secondary }) => (
@@ -9,12 +10,23 @@ const ListItemTextComponent = ({ className, primary, secondary }) => (
       </h3>
     )}
     {secondary && (
-      <p className="smc-list-text-secondary">
+      <div className="smc-list-text-secondary">
         {secondary}
-      </p>
+      </div>
     )}
   </div>
 );
+
+ListItemTextComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  primary: PropTypes.node,
+  secondary: PropTypes.node,
+};
+
+ListItemTextComponent.defaultProps = {
+  primary: null,
+  secondary: null,
+};
 
 const ListItemText = styled(ListItemTextComponent)`
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const TracklineComponent = props => (
@@ -6,6 +7,15 @@ const TracklineComponent = props => (
     {props.children}
   </div>
 );
+
+TracklineComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
+
+TracklineComponent.defaultProps = {
+  children: null,
+};
 
 // TODO use focus color
 const getTracklineBackground = (props) => {

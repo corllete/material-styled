@@ -1,5 +1,13 @@
 # Styled Material Components
 
+## Fork details
+This repo is a separately managed fork of [ConciergeAuctions/styled-material-components](https://github.com/ConciergeAuctions/styled-material-components).
+The main differencies are: 
+
+- More strict eslint rules
+- PropTypes for documenting and monitoring components behaviour 
+- Tests (coming soon) via Jest
+
 [Styled Components](https://www.styled-components.com) inspired library that implements Material Design for stress free React Application scaffolding.
 
 ## Table of Contents

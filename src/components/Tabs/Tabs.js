@@ -1,4 +1,5 @@
 import React, { PureComponent, Children, isValidElement, cloneElement } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import InkBar from './InkBar';
 
@@ -20,9 +21,25 @@ const TabNavigationContainer = styled.div`
 `;
 
 class TabsComponent extends PureComponent {
+  static propTypes = {
+    width: PropTypes.number,
+    showInkbar: PropTypes.bool,
+    activeBackgroundColor: PropTypes.string,
+    passiveBackgroundColor: PropTypes.string,
+    activeFontColor: PropTypes.string,
+    passiveFontColor: PropTypes.string,
+    inkbarColor: PropTypes.string,
+    children: PropTypes.node.isRequired,
+  }
+
   static defaultProps = {
     width: undefined,
     showInkbar: true,
+    activeBackgroundColor: '',
+    passiveBackgroundColor: '',
+    activeFontColor: '',
+    inkbarColor: '',
+    passiveFontColor: '',
   }
 
   constructor(props) {
@@ -57,9 +74,9 @@ class TabsComponent extends PureComponent {
     this.setState({ tabWidth }); // eslint-disable-line 
   }
 
-  updateSelectedIndex = selectedIndex => this.setState({ selectedIndex });
-
   getSelected = index => this.state.selectedIndex === index;
+
+  updateSelectedIndex = selectedIndex => this.setState({ selectedIndex });
 
   render() {
     const tabContent = [];
@@ -83,7 +100,7 @@ class TabsComponent extends PureComponent {
     return (
       // eslint-disable-next-line
       <TabsContainer innerRef={node => this.tabs = node} className='smc-tab-bar'>
-        <TabNavigationContainer className='smc-tab-navigation-container'>
+        <TabNavigationContainer className="smc-tab-navigation-container">
           {tabNavigation}
         </TabNavigationContainer>
         {this.props.showInkbar ?

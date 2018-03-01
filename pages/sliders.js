@@ -1,7 +1,7 @@
-import { PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
-import { Slider } from '../src/components/Slider';
+import Slider from '../src/components/Slider';
 import Button from '../src/components/Button';
 
 class ControlledSlider extends PureComponent {
@@ -17,8 +17,7 @@ class ControlledSlider extends PureComponent {
         <Slider
           value={this.state.value}
           handleValueChange={this.handleValueChange}
-          {...this.props}
-        />
+          {...this.props} />
         {this.state.value}
       </div>
     );
@@ -63,8 +62,7 @@ class SlidersPageComponent extends PureComponent {
                     max={10}
                     step={2}
                     initialValue={5}
-                    disabled={disabled}
-                  />
+                    disabled={disabled} />
                 </div>
               </div>
             </div>
@@ -79,8 +77,7 @@ class SlidersPageComponent extends PureComponent {
                     step={4}
                     initialValue={-4}
                     continuous
-                    disabled={disabled}
-                  />
+                    disabled={disabled} />
                 </div>
               </div>
               <div>
@@ -91,8 +88,7 @@ class SlidersPageComponent extends PureComponent {
                     max={40}
                     step={4}
                     initialValue={-4}
-                    disabled={disabled}
-                  />
+                    disabled={disabled} />
                 </div>
               </div>
             </div>
@@ -105,7 +101,7 @@ class SlidersPageComponent extends PureComponent {
           </div>
         </div>
       </MaterialThemeProvider>
-    )
+    );
   }
 }
 

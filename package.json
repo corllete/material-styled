@@ -2,11 +2,11 @@
   "name": "styled-material-components",
   "version": "0.0.38",
   "description": "coming soon",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "yarn lint",
-    "clear": "rm -rf dist/*",
-    "build": "yarn clear && babel --out-dir dist src",
+    "clear": "rm -rf lib/*",
+    "build": "yarn clear && babel --out-dir lib src",
     "lint": "eslint src/**",
     "dev": "next dev -p 8081",
     "export": "next build && next export -o docs",
@@ -17,20 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ConciergeAuctions/styled-material-components.git"
+    "url": "git@github.com:corllete/styled-material-components.git"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ConciergeAuctions/styled-material-components/issues"
-  },
-  "homepage": "https://github.com/ConciergeAuctions/styled-material-components#readme",
+  "homepage": "https://github.com/corllete/styled-material-components",
   "dependencies": {
     "classnames": "^2.2.5",
     "color": "^2.0.0",
-    "eslint-config-concierge-auctions-base": "^0.0.6",
-    "lodash.merge": "^4.6.0",
-    "react": "^16.0.0",
-    "styled-components": "^2.2.3"
+    "lodash.merge": "^4.6.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -42,10 +36,25 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "eslint": "^4.10.0",
-    "eslint-config-concierge-auctions-react": "^0.0.7",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-compat": "^2.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.3.2",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
     "husky": "^0.14.3",
     "next": "^4.1.4",
     "now": "^9.0.1",
-    "react-dom": "^16.0.0"
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "styled-components": "^3.1.6"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "styled-components": "^3.1.6"
   }
 }

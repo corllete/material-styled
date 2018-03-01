@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 const customBackgroundColor = css`${props => (props.selected ? props.activeBackgroundColor : props.passiveBackgroundColor)}`;
@@ -45,7 +46,7 @@ const TabComponent = ({
   passiveFontColor,
 }) => (
   <TabContainer
-    className='smc-tab'
+    className="smc-tab"
     onClick={() => onClick(index)}
     selected={selected}
     tabWidth={`${tabWidth}px`}
@@ -53,10 +54,34 @@ const TabComponent = ({
     passiveBackgroundColor={passiveBackgroundColor}
     activeFontColor={activeFontColor}
     passiveFontColor={passiveFontColor}>
-    {icon || null}
+    {icon}
     {label}
   </TabContainer>
 );
+
+TabComponent.propTypes = {
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  icon: PropTypes.node,
+  selected: PropTypes.bool,
+  onClick: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
+  tabWidth: PropTypes.number,
+  activeBackgroundColor: PropTypes.string,
+  passiveBackgroundColor: PropTypes.string,
+  activeFontColor: PropTypes.string,
+  passiveFontColor: PropTypes.string,
+};
+
+TabComponent.defaultProps = {
+  label: null,
+  icon: null,
+  selected: false,
+  tabWidth: undefined,
+  activeBackgroundColor: '',
+  passiveBackgroundColor: '',
+  activeFontColor: '',
+  passiveFontColor: '',
+};
 
 const Tab = styled(TabComponent)``;
 

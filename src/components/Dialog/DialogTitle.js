@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const DialogTitleComponent = ({ className, children }) => (
@@ -6,6 +7,11 @@ const DialogTitleComponent = ({ className, children }) => (
     {children}
   </h2>
 );
+
+DialogTitleComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 const DialogTitle = styled(DialogTitleComponent)`
   text-align: left;

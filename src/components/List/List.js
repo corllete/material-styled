@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ListComponent = ({ className, children }) => (
@@ -6,6 +7,15 @@ const ListComponent = ({ className, children }) => (
     {children}
   </ul>
 );
+
+ListComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
+
+ListComponent.defaultProps = {
+  children: null,
+};
 
 const List = styled(ListComponent)`
   position: relative;

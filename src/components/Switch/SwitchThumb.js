@@ -1,9 +1,20 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import elevation from '../../mixins/elevation';
 import ripple from '../../mixins/ripple';
 
 class SwitchThumbComponent extends PureComponent {
+  static propTypes = {
+    className: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
+    disabled: PropTypes.bool,
+  }
+
+  static defaultProps = {
+    disabled: false,
+  }
+
   acceptableProps = {
     onClick: this.props.onClick,
     disabled: this.props.disabled,
@@ -13,11 +24,14 @@ class SwitchThumbComponent extends PureComponent {
     return (
       <div
         className={`${this.props.className} smc-switch`}
-        {...this.acceptableProps}
-      />
+        {...this.acceptableProps} />
     );
   }
 }
+
+SwitchThumbComponent.propTypes = {
+
+};
 
 const lightOn = css`
   left: 20px;

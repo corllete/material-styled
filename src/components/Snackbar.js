@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 
 const rollUp = keyframes`
@@ -33,6 +34,22 @@ const SnackbarWrapper = styled.div`
 `;
 
 class SnackbarComponent extends PureComponent {
+  static propTypes = {
+    open: PropTypes.bool,
+    onRequestClose: PropTypes.func.isRequired,
+    autoHideDuration: PropTypes.number,
+    message: PropTypes.string,
+    className: PropTypes.string.isRequired,
+    children: PropTypes.node,
+  }
+
+  static defaultProps = {
+    open: false,
+    autoHideDuration: 4000,
+    message: '',
+    children: null,
+  }
+
   state = {
     animateOut: false,
   };
@@ -49,7 +66,7 @@ class SnackbarComponent extends PureComponent {
         this.setState({ animateOut: true });
         // run onRequestClose, delayed by animation timing
         setTimeout(this.props.onRequestClose, 300);
-      }, this.props.autoHideDuration || 4000);
+      }, this.props.autoHideDuration);
     } else {
       this.setState({ animateOut: false });
     }

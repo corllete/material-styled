@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { Avatar } from './Avatar';
-import { Circular } from './Circular';
+import Avatar from './Avatar';
+import Circular from './Circular';
 
-export const Image = styled.img`
+const Image = styled.img`
   width: auto;
   ${Avatar} &, ${Circular} & {
     max-width: 100%;
@@ -11,3 +11,5 @@ export const Image = styled.img`
     object-fit: cover;
   }
 `;
+
+export default Image;

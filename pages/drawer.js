@@ -45,14 +45,14 @@ export default class PortalPage extends Component {
             attachment="left"
             open={this.state.temporaryLeft}
             handleRequestClose={this.toggleTemporaryLeft}>
-            <p>{'Hi, im a temporary left attached drawer'}</p>
+            <p>Hi, im a temporary left attached drawer</p>
           </Drawer>
           <Drawer
             temporary
             attachment="right"
             open={this.state.temporaryRight}
             handleRequestClose={this.toggleTemporaryRight}>
-            <p>{'Hi, im a temporary right attached drawer'}</p>
+            <p>Hi, im a temporary right attached drawer</p>
           </Drawer>
           <Button raised primary onClick={this.toggleTemporaryRight}>Right Temporary</Button>
           <Button raised accent onClick={this.toggleTemporaryLeft}>Left Temporary</Button>
@@ -61,13 +61,13 @@ export default class PortalPage extends Component {
             attachment="left"
             open={this.state.persistentLeft}
             handleRequestClose={this.togglePersistentLeft}>
-            <p>{'Hi, im a persistent left attached drawer'}</p>
+            <p>Hi, im a persistent left attached drawer</p>
           </Drawer>
           <Drawer
             attachment="right"
             open={this.state.persistentRight}
             handleRequestClose={this.togglePersistentRight}>
-            <p>{'Hi, im a persistent right attached drawer'}</p>
+            <p>Hi, im a persistent right attached drawer</p>
           </Drawer>
           <Button raised primary onClick={this.togglePersistentRight}>Right Persistent</Button>
           <Button raised accent onClick={this.togglePersistentLeft}>Left Persistent</Button>

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const SliderDisabledWrapperComponent = props => (
@@ -6,6 +7,15 @@ const SliderDisabledWrapperComponent = props => (
     {props.children}
   </div>
 );
+
+SliderDisabledWrapperComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
+
+SliderDisabledWrapperComponent.defaultProps = {
+  children: null,
+};
 
 const getSliderDisabledWrapperSize = (props) => {
   const { disabled, theme: { slider: { sizes } } } = props;
@@ -24,5 +34,13 @@ const SliderDisabledWrapper = styled(SliderDisabledWrapperComponent)`
   border-radius: 50%;
   position: absolute;
 `;
+
+SliderDisabledWrapper.propTypes = {
+  disabled: PropTypes.bool,
+};
+
+SliderDisabledWrapper.defaultProps = {
+  disabled: false,
+};
 
 export default SliderDisabledWrapper;

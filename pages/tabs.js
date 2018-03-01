@@ -19,19 +19,36 @@ const TabsPage = ({ className }) => (
         use the theme styles.
       </p>
       <Tabs>
-        <Tab label='Tab One'>
+        <Tab label="Tab One">
           First tab content is great
         </Tab>
-        <Tab label='Tab Two'>
+        <Tab label="Tab Two">
           Tab two has content as well
         </Tab>
-        <Tab label='Tab Three'>
+        <Tab label="Tab Three">
           Totally tabular
         </Tab>
       </Tabs>
       <br />
       <br />
       <h2>Fixed Tabs Custom Styles</h2>
+      <Tabs
+        width={130}
+        activeBackgroundColor="#b5211e"
+        passiveBackgroundColor="#df4340"
+        activeFontColor="#fff"
+        passiveFontColor="#c2c2c2"
+        showInkbar={false}>
+        <Tab label="Tab One">
+          First tab content is great
+        </Tab>
+        <Tab label="Tab Two">
+          Tab two has content as well
+        </Tab>
+        <Tab label="Tab Three">
+          Totally tabular
+        </Tab>
+      </Tabs>
       <p>
         Tabs can accept props for:
       </p>
@@ -43,23 +60,6 @@ const TabsPage = ({ className }) => (
         <li>showInkbar - default is true, boolean</li>
         <li>inkbarColor - default is accent theme color, or prop passed as a hexa or rgb string</li>
       </ul>
-      <Tabs
-        width='130'
-        activeBackgroundColor='#b5211e'
-        passiveBackgroundColor='#df4340'
-        activeFontColor='#fff'
-        passiveFontColor='#c2c2c2'
-        showInkbar={false}>
-        <Tab label='Tab One'>
-          First tab content is great
-        </Tab>
-        <Tab label='Tab Two'>
-          Tab two has content as well
-        </Tab>
-        <Tab label='Tab Three'>
-          Totally tabular
-        </Tab>
-      </Tabs>
     </div>
   </MaterialThemeProvider>
 );

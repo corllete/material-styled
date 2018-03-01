@@ -1,9 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const MediaItemComponent = props => (
-  <img className={`${props.className} card-media-item`} src={props.src}>{props.children}</img>
+  <img className={`${props.className} card-media-item`} src={props.src} alt={props.alt} />
 );
+
+MediaItemComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+};
 
 const MediaItem = styled(MediaItemComponent)`
   display: inline-block;

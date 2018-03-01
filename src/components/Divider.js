@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export const Divider = styled.hr.attrs({
+const Divider = styled.hr.attrs({
   'data-smc': 'Divider',
-  marginLeft: ({ inset }) => {
+  ml: ({ inset }) => {
     let realInset = inset;
     if (typeof realInset === 'number') realInset = `${inset}px`;
     if (!realInset) return '0px';
@@ -15,5 +15,7 @@ export const Divider = styled.hr.attrs({
   margin-top: 0px;
   margin-bottom: 0px;
   margin-right: 0px;
-  margin-left: ${props => props.marginLeft};
+  margin-left: ${props => props.ml};
 `;
+
+export default Divider;

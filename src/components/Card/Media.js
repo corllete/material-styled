@@ -1,9 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 const MediaComponent = props => (
   <section className={`${props.className} card-media`}>{props.children}</section>
 );
+
+MediaComponent.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string.isRequired,
+};
+
+MediaComponent.defaultProps = {
+  children: null,
+};
 
 const Media = styled(MediaComponent)`
   display: flex;
@@ -19,5 +29,15 @@ const Media = styled(MediaComponent)`
     height: 12.313rem;
   `}
 `;
+
+Media.propTypes = {
+  wide: PropTypes.bool,
+  src: PropTypes.string,
+};
+
+Media.defaultProps = {
+  wide: false,
+  src: '',
+};
 
 export default Media;

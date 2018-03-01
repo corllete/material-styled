@@ -1,10 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import typography from '../../mixins/typography';
 
 const TitleComponent = props => (
   <h1 className={`${props.className} card-title`}>{props.children}</h1>
 );
+
+TitleComponent.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 const Title = styled(TitleComponent)`
   ${typography('body2')}
@@ -17,10 +23,19 @@ const Title = styled(TitleComponent)`
   `}
 
   .primary & {
-    ${props => props.large && css `
+    ${props => props.large && css`
       padding-top: 8px;
     `}
   }
 `;
+
+Title.propTypes = {
+  large: PropTypes.bool,
+};
+
+Title.defaultProps = {
+  large: false,
+};
+
 
 export default Title;

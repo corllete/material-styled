@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import typography from '../mixins/typography';
 
@@ -23,6 +24,16 @@ const ChipContainer = styled.div`
     display: none;
   `};
 `;
+
+ChipContainer.propTypes = {
+  clickable: PropTypes.func,
+  removed: PropTypes.bool,
+};
+
+ChipContainer.defaultProps = {
+  clickable: null,
+  removed: false,
+};
 
 const Avatar = styled.div`
   width: 32px;
@@ -107,8 +118,7 @@ class Chip extends PureComponent {
         onKeyDown={this.handleKeyDown}
         tabIndex={0}
         clickable={onClick}
-        removed={removed}
-      >
+        removed={removed}>
         {avatar && <Avatar>{avatar}</Avatar>}
         <Label onClick={onClick}>
           {label}
@@ -120,6 +130,25 @@ class Chip extends PureComponent {
     );
   }
 }
+
+Chip.propTypes = {
+  className: PropTypes.string,
+  avatar: PropTypes.node,
+  label: PropTypes.string.isRequired,
+  removable: PropTypes.bool,
+  removed: PropTypes.bool,
+  onClick: PropTypes.func,
+  onDelete: PropTypes.func,
+};
+
+Chip.defaultProps = {
+  className: '',
+  avatar: null,
+  removable: false,
+  removed: false,
+  onClick: null,
+  onDelete: null,
+};
 
 export default Chip;
 export { ChipContainer, Label, Avatar, DeleteIcon };

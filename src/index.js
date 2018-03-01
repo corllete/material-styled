@@ -1,17 +1,17 @@
 export { default as Appbar } from './components/Appbar';
-export { Avatar } from './components/Avatar';
+export { default as Avatar } from './components/Avatar';
 export { default as Button } from './components/Button';
 export * from './components/Card';
 export { default as Chip } from './components/Chip';
 export * from './components/Dialog';
-export { Divider } from './components/Divider';
+export { default as Divider } from './components/Divider';
 export { default as Drawer } from './components/Drawer';
 export * from './components/GridList';
 export * from './components/List';
-export { Portal } from './components/Portal';
-export * from './components/Slider';
+export { default as Portal } from './components/Portal';
+export { default as Slider } from './components/Slider';
 export { default as Snackbar } from './components/Snackbar';
-export * from './components/Table';
+export { default as Table } from './components/Table';
 export * from './components/Tabs';
 export { default as TextField } from './components/TextField';
 

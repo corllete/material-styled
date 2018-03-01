@@ -16,11 +16,11 @@ const Switches = () => (
     <List>
       <h1 style={{ marginLeft: 25 }}>Switches</h1>
       <ListItem>
-        <RippleSwitch raised light id="switch1" />
+        <RippleSwitch raised light on id="switch1" />
         <label htmlFor="switch1">Light</label>
       </ListItem>
       <ListItem>
-        <RippleSwitch raised dark id="switch2" />
+        <RippleSwitch raised dark on id="switch2" />
         <label htmlFor="switch2">Dark</label>
       </ListItem>
       <ListItem>
