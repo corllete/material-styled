@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
-import elevation, { elevationTransition } from '../mixins/elevation';
-import ripple from '../mixins/ripple';
+import PropTypes from 'prop-types';
+import elevation, { elevationTransition } from './mixins/elevation';
+import ripple from './mixins/ripple';
 
 const primary = css`
   ${elevation(2)};
@@ -71,5 +72,19 @@ const FloatingActionButton = styled.button.attrs({
   ${props => props.disabled && disabled}
   ${props => props.mini && mini}
 `;
+
+FloatingActionButton.propTypes = {
+  accent: PropTypes.bool,
+  primary: PropTypes.bool,
+  disabled: PropTypes.bool,
+  mini: PropTypes.bool,
+};
+
+FloatingActionButton.defaultProps = {
+  accent: false,
+  primary: false,
+  disabled: false,
+  mini: false,
+};
 
 export default FloatingActionButton;

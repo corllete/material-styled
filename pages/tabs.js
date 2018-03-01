@@ -1,6 +1,5 @@
 import React from 'react';
-import Tabs from '../src/components/Tabs/Tabs';
-import Tab from '../src/components/Tabs/Tab';
+import { Tabs, Tab } from '../src/Tabs';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
 
 // TODO: animations (inkbar && ripple)

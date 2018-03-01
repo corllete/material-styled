@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Button from '../src/components/Button';
-import { Dialog, DialogTitle, DialogBody, DialogFooter } from '../src/components/Dialog';
+import Button from '../src/Button';
+import { Dialog, DialogTitle, DialogBody, DialogFooter } from '../src/Dialog';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
 
 class ExampleDialog extends Component {
   state = {
-    open: false
+    open: false,
   };
 
   openDialog = () => this.setState({ open: true });
@@ -38,7 +38,7 @@ class ExampleDialog extends Component {
           Open dialog
         </Button>
       </div>
-    )
+    );
   }
 }
 
@@ -46,7 +46,7 @@ const DialogPage = () => (
   <MaterialThemeProvider>
     <div>
       <h1>Dialog with title</h1>
-      <ExampleDialog title='Dialog title' />
+      <ExampleDialog title="Dialog title" />
       <h1>Dialog without title</h1>
       <ExampleDialog />
     </div>

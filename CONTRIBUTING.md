@@ -24,6 +24,7 @@ Additionally, there are also many ways you can directly contribute, such as:
 0. Create a remote upstream to the original project repository with: `git remote add upstream https://github.com/ConciergeAuctions/styled-material-components.git`
 0. Create a new branch on your fork with a name relevant to what you are working on
 0. Run `yarn install`
+0. Run `yarn build`
 0. Run `yarn run dev`
 0. Open http://localhost:8081 in your web browser
 0. Make changes to components in src/
@@ -32,6 +33,7 @@ Additionally, there are also many ways you can directly contribute, such as:
 0. Install [now](https://zeit.co/now#whats-now) if you do not already have it installed.
 0. Run `yarn now-build` to get a shareable link to the updated docs copied to your
 clipboard.
+0. Run `yarn contributor` to add yourself to the contributors doc (!).
 0. Open a PR, making sure to include the link to the updated docs so others can
 see your wonderful changes.
 0. Profit :D
@@ -42,6 +44,6 @@ This repo is currently maintained by the engineering team at Collete Lab. If you
 
 ## Community
 
-Discussions about Styled Material Components take place on this repository's [Issues](https://github.com/corllete/material-styled/issues) and [Pull Requests](https://github.com/corllete/material-styled/pulls) sections. 
+Discussions about Material Styled Components take place on this repository's [Issues](https://github.com/corllete/material-styled/issues) and [Pull Requests](https://github.com/corllete/material-styled/pulls) sections. 
 
 Read more about contributing to the open source community on Github's fantastic [Open Source Guides](https://opensource.guide/)

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import elevation, { elevationTransition } from '../mixins/elevation';
-import ripple from '../mixins/ripple';
+import elevation, { elevationTransition } from './mixins/elevation';
+import ripple from './mixins/ripple';
 
 const primary = css`
   color: ${props => props.theme.primary};

@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
-import Checkbox from '../src/components/Checkbox';
-import List from '../src/components/List/List';
-import ListItem from '../src/components/List/ListItem';
+import Checkbox from '../src/Checkbox';
+import List from '../src/List/List';
+import ListItem from '../src/List/ListItem';
 import defaultTheme from '../src/theme/defaultTheme';
 
 class CheckboxesPage extends PureComponent {

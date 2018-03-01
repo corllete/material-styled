@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../src/components/Button';
+import Button from '../src/Button';
 import {
   Card,
   Primary,
@@ -10,7 +10,7 @@ import {
   Actions,
   HorizontalBlock,
   MediaItem,
-} from '../src/components/Card';
+} from '../src/Card';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
 
 const DemoCard = Card.extend`
@@ -38,8 +38,7 @@ const CardsPage = ({ className }) => (
         <Primary
           avatar="https://i.pinimg.com/736x/a1/79/b0/a179b0e974b49846fb7283fdf178fd55--headshot-actor-acting-headshots.jpg"
           title="Title"
-          subheader="Subhead"
-        />
+          subheader="Subhead" />
         <Media wide src="https://s3.amazonaws.com/media.conciergeauctions.com/images/16-9.jpg" />
         <SupportingText>
           Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
@@ -53,8 +52,7 @@ const CardsPage = ({ className }) => (
         <Primary
           avatar="https://i.pinimg.com/736x/a1/79/b0/a179b0e974b49846fb7283fdf178fd55--headshot-actor-acting-headshots.jpg"
           title="Title"
-          subheader="Subhead"
-        />
+          subheader="Subhead" />
         <Media wide src="https://s3.amazonaws.com/media.conciergeauctions.com/images/16-9.jpg" />
         <Actions vertical>
           <Button compact>Action 1</Button>
@@ -65,8 +63,7 @@ const CardsPage = ({ className }) => (
         <Media wide src="https://s3.amazonaws.com/media.conciergeauctions.com/images/16-9.jpg" />
         <Primary
           title="Title"
-          subheader="Subhead"
-        />
+          subheader="Subhead" />
         <Actions>
           <Button compact>Action 1</Button>
           <Button compact>Action 2</Button>
@@ -75,8 +72,7 @@ const CardsPage = ({ className }) => (
       <DemoCard>
         <Primary
           title="Title"
-          subheader="Subhead"
-        />
+          subheader="Subhead" />
         <SupportingText>
           Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
           Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
@@ -101,9 +97,8 @@ const CardsPage = ({ className }) => (
           <Primary
             title="Title"
             subheader="Subhead"
-            large
-          />
-          <MediaItem src="https://s3.amazonaws.com/media.conciergeauctions.com/images/1-1.jpg" />
+            large />
+          <MediaItem src="https://s3.amazonaws.com/media.conciergeauctions.com/images/1-1.jpg" alt="" />
         </HorizontalBlock>
         <Actions>
           <Button compact>Action 1</Button>
@@ -115,9 +110,8 @@ const CardsPage = ({ className }) => (
           <Primary
             title="Title"
             subheader="Subhead"
-            large
-          />
-          <MediaItem scale={1.5} src="https://s3.amazonaws.com/media.conciergeauctions.com/images/1-1.jpg" />
+            large />
+          <MediaItem scale={1.5} src="https://s3.amazonaws.com/media.conciergeauctions.com/images/1-1.jpg" alt="" />
         </HorizontalBlock>
         <Actions>
           <Button compact>Action 1</Button>
@@ -129,9 +123,8 @@ const CardsPage = ({ className }) => (
           <Primary
             title="Title"
             subheader="Subhead"
-            large
-          />
-          <MediaItem scale={2} src="https://s3.amazonaws.com/media.conciergeauctions.com/images/1-1.jpg" />
+            large />
+          <MediaItem scale={2} src="https://s3.amazonaws.com/media.conciergeauctions.com/images/1-1.jpg" alt="" />
         </HorizontalBlock>
         <Actions>
           <Button compact>Action 1</Button>
@@ -140,7 +133,7 @@ const CardsPage = ({ className }) => (
       </DemoCard>
       <DemoCard>
         <HorizontalBlock>
-          <MediaItem scale={3} src="https://s3.amazonaws.com/media.conciergeauctions.com/images/1-1.jpg" />
+          <MediaItem scale={3} src="https://s3.amazonaws.com/media.conciergeauctions.com/images/1-1.jpg" alt="" />
           <Actions vertical>
             <Button compact>A1</Button>
             <Button compact>A2</Button>

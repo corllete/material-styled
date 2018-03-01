@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import elevation from '../../mixins/elevation';
+import elevation from '../mixins/elevation';
 
 const CardComponent = ({ className, children }) => (
   <div className={`${className} smc-card`}>{children}</div>

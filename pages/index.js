@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
 
-import List from '../src/components/List/List';
-import ListItem from '../src/components/List/ListItem';
+import List from '../src/List/List';
+import ListItem from '../src/List/ListItem';
 
 const HomePage = ({ className }) => (
   <MaterialThemeProvider theme={{ primary: '#03A9F4' }}>

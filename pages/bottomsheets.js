@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
-import { BottomSheet } from '../src/components/BottomSheet';
-import Button from '../src/components/Button';
+import BottomSheet from '../src/BottomSheet';
+import Button from '../src/Button';
 
 const PageContainer = styled.div`
   padding: 10px;
@@ -11,15 +11,15 @@ const PageContainer = styled.div`
 export default class PortalPage extends Component {
   state = {
     modal: false,
-    persistent: false
+    persistent: false,
   };
 
   toggleModal = () => this.setState(prevState => ({
-    modal: !prevState.modal
+    modal: !prevState.modal,
   }));
 
   togglePersistent = () => this.setState(prevState => ({
-    persistent: !prevState.persistent
+    persistent: !prevState.persistent,
   }));
 
 

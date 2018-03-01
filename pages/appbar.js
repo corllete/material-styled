@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
-import { Drawer } from '../src/components/Drawer';
-import Button from '../src/components/Button';
-import Appbar from '../src/components/Appbar';
+import { Drawer } from '../src/Drawer';
+import Button from '../src/Button';
+import Appbar from '../src/Appbar';
 
 const PageContainer = styled.div`
   width: 100vw;
@@ -30,7 +30,7 @@ export default class AppbarPage extends Component {
   }));
 
   closeIcon = () => (
-    <a onClick={this.togglePersistentRight} className={`closeIcon`}>
+    <a onClick={this.togglePersistentRight} className="closeIcon">
       x
     </a>
   );
@@ -39,38 +39,36 @@ export default class AppbarPage extends Component {
     return (
       <MaterialThemeProvider theme={{ primary: '#03A9F4' }}>
         <PageContainer>
-          {!this.state.persistentRight ? <Appbar title='This is a title!' /> : <span />}
+          {!this.state.persistentRight ? <Appbar title="This is a title!" /> : <span />}
           <Content>
             <h1>Appbars</h1>
             <h2>Appbar in a drawer</h2>
             <Drawer
-              attachment='right'
+              attachment="right"
               open={this.state.persistentRight}
               handleRequestClose={this.togglePersistentRight}>
-              <Appbar navIcon={this.closeIcon} title='I have a close button!' />
-              <Appbar title='I am in this drawer!' />
+              <Appbar navIcon={this.closeIcon} title="I have a close button!" />
+              <Appbar title="I am in this drawer!" />
               <p>I am a <b>persistent</b> drawer!</p>
             </Drawer>
             <Drawer
               temporary
-              attachment='right'
+              attachment="right"
               open={this.state.temporaryRight}
               handleRequestClose={this.toggleTemporaryRight}>
-              <Appbar title='I am in this drawer!' />
+              <Appbar title="I am in this drawer!" />
               <p>I am a <b>temporary</b> drawer!</p>
             </Drawer>
             <Button
               raised
               primary
-              onClick={this.togglePersistentRight}
-            >
+              onClick={this.togglePersistentRight}>
               Launch Permanent Drawer
             </Button>
             <Button
               raised
               accent
-              onClick={this.toggleTemporaryRight}
-            >
+              onClick={this.toggleTemporaryRight}>
               Launch Temporary Drawer
             </Button>
           </Content>

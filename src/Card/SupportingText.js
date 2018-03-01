@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import typography from '../../mixins/typography';
+import typography from '../mixins/typography';
 
 const SupportingTextComponent = props => (
   <section className={`${props.className} card-supporting-text`}>{props.children}</section>

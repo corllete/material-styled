@@ -3,6 +3,32 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 class Checkbox extends PureComponent {
+  static propTypes = {
+    checked: PropTypes.bool,
+    defaultChecked: PropTypes.bool,
+    indeterminate: PropTypes.bool,
+    primary: PropTypes.bool,
+    disabled: PropTypes.bool,
+    value: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+    name: PropTypes.string,
+    id: PropTypes.string,
+    onChange: PropTypes.func,
+    onChangeValue: PropTypes.func,
+  }
+
+  static defaultProps = {
+    checked: null,
+    defaultChecked: false,
+    indeterminate: false,
+    primary: false,
+    disabled: false,
+    value: '',
+    name: 'checkbox',
+    id: '',
+    onChange: null,
+    onChangeValue: null,
+  }
+
   state = {
     checked: this.props.checked || this.props.defaultChecked || false,
     indeterminate: this.props.indeterminate || false,
@@ -22,7 +48,7 @@ class Checkbox extends PureComponent {
   };
 
   render() {
-    const { primary, disabled, checked: checkedProp, value, name } = this.props;
+    const { primary, disabled, checked: checkedProp, value, name, id } = this.props;
     const { indeterminate } = this.state;
     // determine if checkbox is controlled or uncontrolled
     const checked = checkedProp !== null ? checkedProp : this.state.checked;
@@ -47,35 +73,13 @@ class Checkbox extends PureComponent {
           disabled={disabled}
           checked={checked}
           value={value}
-          name={name} />
+          name={name}
+          id={id} />
       </CheckboxContainer>
     );
   }
 }
 
-Checkbox.propTypes = {
-  checked: PropTypes.bool,
-  defaultChecked: PropTypes.bool,
-  indeterminate: PropTypes.bool,
-  primary: PropTypes.bool,
-  disabled: PropTypes.bool,
-  value: PropTypes.oneOfType(PropTypes.bool, PropTypes.string),
-  name: PropTypes.string,
-  onChange: PropTypes.func,
-  onChangeValue: PropTypes.func,
-};
-
-Checkbox.defaultProps = {
-  checked: null,
-  defaultChecked: false,
-  indeterminate: false,
-  primary: false,
-  disabled: false,
-  value: '',
-  name: 'checkbox',
-  onChange: null,
-  onChangeValue: null,
-};
 
 const CheckboxContainer = styled.div`
   display: inline-block;

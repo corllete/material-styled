@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
-import { GridList, GridTile } from '../src/components/GridList';
+import { GridList, GridTile } from '../src/GridList';
 
 const Img = styled.img`
   object-fit: cover;
@@ -45,21 +45,19 @@ const GridListsPage = ({ className }) => (
       <GridList>
         {tilesData.map(tile => (
           <GridTile
-            key={tile.img}
-          >
+            key={tile.img}>
             <Img src={tile.img} />
           </GridTile>
         ))}
       </GridList>
       <h3>Column Grid</h3>
       <p>Change flex-direction to column by passing in "column"</p>
-      
+
       <div height="200px">
         <GridList column>
           {tilesData.map(tile => (
             <GridTile
-              key={tile.img}
-            >
+              key={tile.img}>
               <Img src={tile.img} />
             </GridTile>
           ))}

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import Avatar from '../Avatar';
-import typography from '../../mixins/typography';
+import typography from '../mixins/typography';
 
 const Title = styled.h1`
   ${typography('body2')}

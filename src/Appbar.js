@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import typography from '../mixins/typography';
-import elevation from '../mixins/elevation';
+import typography from './mixins/typography';
+import elevation from './mixins/elevation';
 
 // placeholder for implementing NavIconPlaceholder img
 const NavIconPlaceholder = styled.div`
