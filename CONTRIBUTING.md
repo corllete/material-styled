@@ -10,7 +10,7 @@ Welcome to Styled Material Components! We're so glad you're here. Please read th
 0. [Community](#community)
 
 ## Issues and Contributions
-The easiest way to start contributing is to check out our current open [Issues](https://github.com/ConciergeAuctions/styled-material-components/issues). Here you will find open issues that need to be implemented including but not limited to: features, enhancements, bug fixes, discussions, and questions. Issues we've identified as possible good places to start for first time contributors are labeled as "good first issue." Feel free to assign yourself to issues you are interested in tackling and open a PR when you feel like your code satisfies the open issue. 
+The easiest way to start contributing is to check out our current open [Issues](https://github.com/corllete/material-styled/issues). Here you will find open issues that need to be implemented including but not limited to: features, enhancements, bug fixes, discussions, and questions. Issues we've identified as possible good places to start for first time contributors are labeled as "good first issue." Feel free to assign yourself to issues you are interested in tackling and open a PR when you feel like your code satisfies the open issue. 
 
 Additionally, there are also many ways you can directly contribute, such as: 
 
@@ -38,18 +38,10 @@ see your wonderful changes.
 
 ## Contribution review process
 
-This repo is currently maintained by the engineering team at Merlin Labs. If you haven't heard from anyone in 10 days, feel free to bump the thread or @-mention a maintainer to review your contribution.
+This repo is currently maintained by the engineering team at Collete Lab. If you haven't heard from anyone in 10 days, feel free to bump the thread or @-mention a maintainer to review your contribution.
 
 ## Community
 
-Discussions about Styled Material Components take place on this repository's [Issues](https://github.com/ConciergeAuctions/styled-material-components/issues) and [Pull Requests](https://github.com/ConciergeAuctions/styled-material-components/pulls) sections. 
-
-We also have an active [#smc Slack Channel](https://merlin-labs.slack.com/messages/C8SU9KJTG/details/), and would love for you to join the discussion there. If you are having trouble accessing the channel please reach out to @ashwoodall to request access. 
-
-Anyone is welcome to join these conversations. 
-
-Wherever possible, do not take these conversations to private channels, including contacting the maintainers directly. Keeping communication public means everybody can benefit and learn from the conversation. Please read more about conversation guidelines at our [Code of Conduct](https://github.com/ConciergeAuctions/styled-material-components/blob/master/CODE_OF_CONDUCT.md)
-
-Follow us on [Twitter](https://twitter.com/merlinOSA) to learn more about our open source initiatives and get involved with our community <3
+Discussions about Styled Material Components take place on this repository's [Issues](https://github.com/corllete/material-styled/issues) and [Pull Requests](https://github.com/corllete/material-styled/pulls) sections. 
 
 Read more about contributing to the open source community on Github's fantastic [Open Source Guides](https://opensource.guide/)

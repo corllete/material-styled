@@ -1,7 +1,7 @@
 {
-  "name": "styled-material-components",
-  "version": "0.0.38",
-  "description": "coming soon",
+  "name": "@corllete/material-styled",
+  "version": "0.0.1",
+  "description": "Styled Components implementation of Material Design",
   "main": "lib/index.js",
   "scripts": {
     "test": "yarn lint",
@@ -17,10 +17,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:corllete/styled-material-components.git"
+    "url": "git@github.com:corllete/material-styled.git"
   },
   "license": "MIT",
-  "homepage": "https://github.com/corllete/styled-material-components",
+  "homepage": "https://github.com/corllete/material-styled",
   "dependencies": {
     "classnames": "^2.2.5",
     "color": "^2.0.0",
@@ -55,6 +55,6 @@
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "styled-components": "^3.1.6"
+    "styled-components": "^3.0"
   }
 }

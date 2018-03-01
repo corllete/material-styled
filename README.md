@@ -1,12 +1,13 @@
 # Styled Material Components
 
 ## Fork details
-This repo is a separately managed fork of [ConciergeAuctions/styled-material-components](https://github.com/ConciergeAuctions/styled-material-components).
-The main differencies are: 
+This repo is a independently managed fork of [MerlinLabs/styled-material-components](https://github.com/MerlinLabs/styled-material-components).
+The goals: 
 
 - More strict eslint rules
 - PropTypes for documenting and monitoring components behaviour 
 - Tests (coming soon) via Jest
+- Use latest and greatest versions of **React** and **styled-components**
 
 [Styled Components](https://www.styled-components.com) inspired library that implements Material Design for stress free React Application scaffolding.
 
@@ -36,11 +37,11 @@ yarn run dev
 * Open http://localhost:8081 in your browser
 
 ## Contributing
-* Check out our [Contributing Guide](https://github.com/ConciergeAuctions/styled-material-components/blob/master/CONTRIBUTING.md)
-* Please follow the [Code of Conduct](https://github.com/ConciergeAuctions/styled-material-components/blob/master/CODE_OF_CONDUCT.md)
+* Check out our [Contributing Guide](https://github.com/corllete/material-styled/blob/master/CONTRIBUTING.md)
+* Please follow the [Code of Conduct](https://github.com/corllete/material-styled/blob/master/CODE_OF_CONDUCT.md)
 
 ## How to use
-The components in this library are Styled Components and have full access to the Style Components v2 api. That means you can call .extend on any of the exported components to modify the styling of everything within the component.
+The components in this library are Styled Components and have full access to the Style Components v3 api. That means you can call .extend on any of the exported components to modify the styling of everything within the component.
 
 ### Theme Provider
 Similar to the Styled Components ThemeProvider (its a thin wrapper around it) except that it provides a default theme that matches material design's default theme. You can provide a custom theme here with any option from src/theme/defaultTheme.js overwritten. You can nest ThemeProviers just like with StyledComponents to overwrite portions of the theme for sections of your application
