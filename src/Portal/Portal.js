@@ -11,13 +11,14 @@ class Portal extends Component {
     attachment: PropTypes.string,
     open: PropTypes.bool.isRequired,
     shift: PropTypes.bool,
-    onRequestClose: PropTypes.func.isRequired,
+    onRequestClose: PropTypes.func,
     renderContents: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
     shift: false,
     attachment: 'left',
+    onRequestClose: null,
   };
 
   state = {

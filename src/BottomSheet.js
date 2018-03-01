@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import classNames from 'classnames';
-import elevation from '../mixins/elevation';
-import Portal from '../components/Portal';
+import elevation from './mixins/elevation';
+import Portal from './Portal';
 
 const bottomSheetSizing = css`
   height: 0;
@@ -72,7 +72,7 @@ const StyledBottomSheet = styled(BaseBottomSheet)`
   }
 `;
 
-export const BottomSheet = ({
+const BottomSheet = ({
   open,
   children,
   handleRequestClose,

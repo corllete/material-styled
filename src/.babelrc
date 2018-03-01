@@ -1,10 +1,32 @@
 {
   "presets": [
-    ["env", { "loose": true }],
+    ["env", {
+      "modules": false,
+      "targets": {
+        "browsers": ["last 3 versions"]
+      },
+      "exclude": ["transform-regenerator"],
+      "useBuiltIns": "usage"
+    }],
     "react"
   ],
+  "env": {
+    "production": {
+      "only": [
+        "src"
+      ],
+      "plugins": [
+        "transform-react-remove-prop-types",
+        "transform-react-inline-elements",
+        "transform-react-constant-elements"
+      ]
+    }
+  },
   "plugins": [
-    "add-module-exports",
+    ["styled-components", {
+      "ssr": true
+    }],
+    "syntax-dynamic-import",
     "transform-object-rest-spread",
     "transform-class-properties",
     "transform-export-extensions"

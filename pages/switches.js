@@ -1,9 +1,9 @@
 import React from 'react';
-import Switch from '../src/components/Switch/Switch';
+import Switch from '../src/Switch';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
 import withRipple from '../src/enhancers/withRipple';
-import List from '../src/components/List/List';
-import ListItem from '../src/components/List/ListItem';
+import List from '../src/List/List';
+import ListItem from '../src/List/ListItem';
 
 // TODO:
 // Finish diable

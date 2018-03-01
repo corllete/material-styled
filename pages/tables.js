@@ -1,6 +1,6 @@
 import React from 'react';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
-import Table from '../src/components/Table';
+import Table from '../src/Table';
 
 const fields = [
   {

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
-import Chip, { Avatar, Label, DeleteIcon } from '../src/components/Chip';
+import Chip, { Avatar, Label, DeleteIcon } from '../src/Chip';
 
 const demo = (area) => {
   alert(`You clicked on the ${area}`);

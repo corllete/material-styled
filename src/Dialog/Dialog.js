@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import elevation from '../../mixins/elevation';
+import elevation from '../mixins/elevation';
 import Portal from '../Portal';
 
 /* eslint-disable jsx-a11y/click-events-have-key-events */

@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import elevation from '../../mixins/elevation';
-import ripple from '../../mixins/ripple';
+import elevation from '../mixins/elevation';
+import ripple from '../mixins/ripple';
 
 class SwitchThumbComponent extends PureComponent {
   static propTypes = {
@@ -28,10 +28,6 @@ class SwitchThumbComponent extends PureComponent {
     );
   }
 }
-
-SwitchThumbComponent.propTypes = {
-
-};
 
 const lightOn = css`
   left: 20px;
@@ -86,7 +82,7 @@ const SwitchThumb = styled(SwitchThumbComponent)`
 
   ${props => props.light && props.disabled && lightDisabled}
   ${props => props.dark && props.disabled && darkDisabled}
-  
+
   ${props => props.raised && raised}
 `;
 

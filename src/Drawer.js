@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { injectGlobal, css } from 'styled-components';
 import classNames from 'classnames';
-import elevation from '../mixins/elevation';
-import Portal from '../components/Portal';
+import elevation from './mixins/elevation';
+import Portal from './Portal';
 
 const drawerSizing = css`
   width: 240px;

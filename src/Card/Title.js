@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import typography from '../../mixins/typography';
+import typography from '../mixins/typography';
 
 const TitleComponent = props => (
   <h1 className={`${props.className} card-title`}>{props.children}</h1>

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import typography from '../mixins/typography';
+import typography from './mixins/typography';
 
 const ChipContainer = styled.div`
   display: inline-flex;
@@ -45,7 +45,7 @@ const Avatar = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  ${typography('body')} 
+  ${typography('body')}
   font-size: 16px;
 `;
 

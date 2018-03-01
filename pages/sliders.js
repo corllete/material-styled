@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
-import Slider from '../src/components/Slider';
-import Button from '../src/components/Button';
+import Slider from '../src/Slider';
+import Button from '../src/Button';
 
 class ControlledSlider extends PureComponent {
   state = {

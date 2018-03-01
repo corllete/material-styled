@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
-import TextField from '../src/components/TextField';
+import TextField from '../src/TextField';
 
 const validateLength = str => str.length > 7;
 

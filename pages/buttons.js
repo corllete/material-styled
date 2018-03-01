@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../src/components/Button';
-import FloatingActionButton from '../src/components/FloatingActionButton';
+import Button from '../src/Button';
+import FloatingActionButton from '../src/FloatingActionButton';
 import withRipple from '../src/enhancers/withRipple';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
 

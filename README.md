@@ -1,4 +1,4 @@
-# Styled Material Components
+# Material Styled Components
 
 ## Fork details
 This repo is a independently managed fork of [MerlinLabs/styled-material-components](https://github.com/MerlinLabs/styled-material-components).
@@ -32,7 +32,8 @@ The goals:
 * Run: 
 ```
 yarn install
-yarn run dev
+yarn build
+yarn dev
 ```
 * Open http://localhost:8081 in your browser
 

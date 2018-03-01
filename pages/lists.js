@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import List from '../src/components/List/List';
-import ListItem from '../src/components/List/ListItem';
-import ListItemText from '../src/components/List/ListItemText';
+import List from '../src/List/List';
+import ListItem from '../src/List/ListItem';
+import ListItemText from '../src/List/ListItemText';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
 
 const ListsPage = ({ className }) => (

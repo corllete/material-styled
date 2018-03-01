@@ -1,9 +1,7 @@
 node_modules
 .next
-dist
 lib
 docs
-
 logs
 *.log
 npm-debug.log*

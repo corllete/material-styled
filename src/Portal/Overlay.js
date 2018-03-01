@@ -15,12 +15,13 @@ export const BaseOverlay = props => (
 
 BaseOverlay.propTypes = {
   className: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   children: PropTypes.node,
 };
 
 BaseOverlay.defaultProps = {
   children: null,
+  onClick: () => {},
 };
 
 export const Overlay = styled(BaseOverlay)`
