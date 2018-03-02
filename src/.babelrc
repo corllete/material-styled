@@ -1,7 +1,6 @@
 {
   "presets": [
     ["env", {
-      "modules": false,
       "targets": {
         "browsers": ["last 3 versions"]
       },
@@ -29,6 +28,7 @@
     "syntax-dynamic-import",
     "transform-object-rest-spread",
     "transform-class-properties",
-    "transform-export-extensions"
+    "transform-export-extensions",
+    "transform-regenerator"
   ]
 }

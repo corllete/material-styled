@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
-import { Drawer } from '../src/Drawer';
+import Drawer from '../src/Drawer';
 import Button from '../src/Button';
 import Appbar from '../src/Appbar';
 
