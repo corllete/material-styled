@@ -1,5 +1,6 @@
 import { injectGlobal } from 'styled-components';
 
+/* eslint-disable no-unused-expressions */
 injectGlobal`
   body {
     margin: 0;

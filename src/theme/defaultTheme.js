@@ -4,8 +4,8 @@ import { makeMaterialSliderTheme } from './makeMaterialSliderTheme';
 const sliderTheme = makeMaterialSliderTheme();
 
 const defaultTheme = {
-  primary: '#2BACB1',
-  accent: '#E8604A',
+  primary: '#3f51b5',
+  accent: '#ff4081',
   white: '#ffffff',
   // Elevation theme
   elevation: {
