@@ -13,6 +13,7 @@ class TextFieldComponent extends PureComponent {
     /* Generic */
     defaultValue: PropTypes.string,
     required: PropTypes.bool,
+    type: PropTypes.string,
     disabled: PropTypes.bool,
     textarea: PropTypes.bool,
     name: PropTypes.string,
@@ -67,6 +68,7 @@ class TextFieldComponent extends PureComponent {
   static defaultProps = {
     defaultValue: '',
     required: false,
+    type: 'text',
     disabled: false,
     textarea: false,
     rows: 1,
@@ -204,6 +206,7 @@ class TextFieldComponent extends PureComponent {
           )
           : (
             <Input
+              type={this.props.type}
               hasPrefix={!!this.props.prefix}
               hasSuffix={!!this.props.suffix}
               inputStyle={this.props.inputStyle}
