@@ -1,6 +1,6 @@
 {
   "name": "@corllete/material-styled",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Styled Components implementation of Material Design",
   "main": "lib/index.js",
   "scripts": {
