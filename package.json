@@ -24,6 +24,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "color": "^2.0.0",
+    "lodash.debounce": "^4.0.8",
     "lodash.merge": "^4.6.0"
   },
   "devDependencies": {
@@ -53,14 +54,14 @@
     "next": "^4.1.4",
     "now": "^9.0.1",
     "prop-types": "^15.6.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
     "styled-components": "^3.1.6"
   },
   "peerDependencies": {
     "prop-types": "^15.6.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": ">= 0.14.0 < 17.0.0-0",
+    "react-dom": "^16.3.0",
     "styled-components": "^3.0"
   }
 }
