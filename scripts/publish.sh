@@ -35,7 +35,7 @@ else
   echo "3. [publish] npm publish"
   npm publish
   echo "4. [git] git commit -am \"New version ${version}\""
-  git commit -am "Version ${version}"
+  git commit -am "New version ${version}"
   echo "4 [git] git tag -a ${version} -m \"Version ${version}\""
   git tag -a ${version} -m "Version ${version}"
   echo "5. [git] git push && git push --tags"
