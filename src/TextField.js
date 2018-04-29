@@ -19,6 +19,7 @@ class TextFieldComponent extends PureComponent {
     textarea: PropTypes.bool,
     name: PropTypes.string,
     value: PropTypes.string,
+    autoComplete: PropTypes.string,
 
     /* textarea = true only */
     rows: PropTypes.number,
@@ -55,6 +56,7 @@ class TextFieldComponent extends PureComponent {
     onChangeValue: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
+    onClick: PropTypes.func,
     validator: PropTypes.func,
 
     /* Error related */
@@ -72,6 +74,7 @@ class TextFieldComponent extends PureComponent {
     type: 'text',
     disabled: false,
     readOnly: false,
+    autoComplete: 'on',
     textarea: false,
     rows: 1,
     autoFocus: false,
@@ -95,6 +98,7 @@ class TextFieldComponent extends PureComponent {
     onChangeValue: null,
     onFocus: null,
     onBlur: null,
+    onClick: null,
     validator: null,
     error: false,
     errorText: null,
@@ -132,6 +136,11 @@ class TextFieldComponent extends PureComponent {
   onBlur = (e) => {
     if (this.props.onBlur) this.props.onBlur(e);
     this.setState({ focus: false });
+  };
+
+  onClick = (e) => {
+    if (this.props.onClick) this.props.onClick(e);
+    this.setState({ focus: true });
   };
 
   setRef = (ref) => { this.textArea = ref; }
@@ -203,12 +212,14 @@ class TextFieldComponent extends PureComponent {
               onChange={this.onChange}
               onFocus={this.onFocus}
               onBlur={this.onBlur}
+              onClick={this.onClick}
               className="smc-text-field-area"
               name={this.props.name}
               innerRef={this.setRef} />
           )
           : (
             <Input
+              autoComplete={this.props.autoComplete}
               type={this.props.type}
               hasPrefix={!!this.props.prefix}
               hasSuffix={!!this.props.suffix}
@@ -220,6 +231,7 @@ class TextFieldComponent extends PureComponent {
               onChange={this.onChange}
               onFocus={this.onFocus}
               onBlur={this.onBlur}
+              onClick={this.onClick}
               name={this.props.name}
               className="smc-text-field-input" />
           )
