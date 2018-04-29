@@ -15,6 +15,7 @@ class TextFieldComponent extends PureComponent {
     required: PropTypes.bool,
     type: PropTypes.string,
     disabled: PropTypes.bool,
+    readOnly: PropTypes.bool,
     textarea: PropTypes.bool,
     name: PropTypes.string,
     value: PropTypes.string,
@@ -70,6 +71,7 @@ class TextFieldComponent extends PureComponent {
     required: false,
     type: 'text',
     disabled: false,
+    readOnly: false,
     textarea: false,
     rows: 1,
     autoFocus: false,
@@ -194,6 +196,7 @@ class TextFieldComponent extends PureComponent {
               hasSuffix={!!this.props.suffix}
               inputStyle={this.props.inputStyle}
               disabled={this.props.disabled}
+              readOnly={this.props.readOnly}
               autoFocus={this.props.autoFocus}
               value={this.props.value || this.state.text}
               height={this.state.height}
@@ -211,6 +214,7 @@ class TextFieldComponent extends PureComponent {
               hasSuffix={!!this.props.suffix}
               inputStyle={this.props.inputStyle}
               disabled={this.props.disabled}
+              readOnly={this.props.readOnly}
               autoFocus={this.props.autoFocus}
               value={this.props.value || this.state.text}
               onChange={this.onChange}
