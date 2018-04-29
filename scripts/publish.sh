@@ -31,10 +31,10 @@ else
   echo "1. [build] yarn build:prod"
   yarn build:prod > /dev/null
 
-  update_version=${npm version $update_type}
+  update_version=$(npm version $update_type)
   echo "2. [publish] npm version -> $update_version"
 
-  publish=${npm publish}
+  publish=$(npm publish)
   echo "3. [publish] npm publish -> ${publish}"
 
   echo "4. [git] git push && git push --tags"
