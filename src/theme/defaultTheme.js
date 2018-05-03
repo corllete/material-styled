@@ -22,6 +22,9 @@ const defaultTheme = {
       ambient: black.alpha(0.12).toString(),
     },
   },
+  colors: {
+    required: '#e86041',
+  },
   textColors: {
     primary: black.alpha(0.87).toString(),
     secondary: black.alpha(0.54).toString(),
