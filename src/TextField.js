@@ -116,9 +116,9 @@ class TextFieldComponent extends PureComponent {
   onChange = (e) => {
     const text = e.target.value;
     if (this.props.onChange) this.props.onChange(e);
-    if (this.props.onChangeValue) this.props.onChangeValue(text, e);
+    if (this.props.onChangeValue) this.props.onChangeValue(text, this.props.name);
     const isInvalid = this.props.validator && !this.props.validator(text);
-    const isEmptyButRequired = this.props.required ? !e.target.value : false;
+    const isEmptyButRequired = this.props.required ? !text : false;
     const newHeight = this.props.textarea ? this.textArea.scrollHeight : '';
 
     this.setState({
