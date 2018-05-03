@@ -33,11 +33,18 @@ class TextFieldPage extends PureComponent {
           <h2>Simple Examples</h2>
           <TextFieldWithBottomMargin hintText="autofocus" autoFocus />
           <TextFieldWithBottomMargin hintText="Hint Text" />
-          <TextFieldWithBottomMargin defaultValue="Default Value" />
+          <TextFieldWithBottomMargin
+            floatingLabelText="floating label"
+            defaultValue="Default Value" />
           <TextFieldWithBottomMargin
             floatingLabelText="floating label" />
           <TextFieldWithBottomMargin
             hintText="with hint text"
+            value="no default value"
+            floatingLabelText="floating label" />
+          <TextFieldWithBottomMargin
+            hintText="with hint text"
+            value="value"
             floatingLabelText="floating label" />
           <TextFieldWithBottomMargin
             helperText="persistent helper text"

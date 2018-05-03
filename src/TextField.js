@@ -116,7 +116,7 @@ class TextFieldComponent extends PureComponent {
   onChange = (e) => {
     const text = e.target.value;
     if (this.props.onChange) this.props.onChange(e);
-    if (this.props.onChangeValue) this.props.onChangeValue(text, this.props.name);
+    if (this.props.onChangeValue) this.props.onChangeValue(text, e);
     const isInvalid = this.props.validator && !this.props.validator(text);
     const isEmptyButRequired = this.props.required ? !e.target.value : false;
     const newHeight = this.props.textarea ? this.textArea.scrollHeight : '';
@@ -124,6 +124,7 @@ class TextFieldComponent extends PureComponent {
     this.setState({
       text,
       error: this.props.error || isInvalid || isEmptyButRequired,
+      errorValidate: isInvalid || isEmptyButRequired,
       height: !this.props.multiline || (this.textArea || {}).value === '' ? '100%' : newHeight,
     });
   };
@@ -148,7 +149,12 @@ class TextFieldComponent extends PureComponent {
   textArea = null;
 
   render() {
-    const hasError = Boolean(this.state.error || this.props.error || this.props.errorText);
+    const hasError = Boolean(
+      this.state.error
+      || this.props.error
+      || (this.props.errorText && !this.props.validator)
+      || (this.state.errorValidate && this.props.validator)
+    );
     return (
       <div className={`${this.props.className} smc-text-field-container`}>
         {this.props.suffix && <Suffix>{this.props.suffix}</Suffix>}
@@ -161,9 +167,23 @@ class TextFieldComponent extends PureComponent {
           floatingLabelStyle={
             hasError ? this.props.floatingLabelErrorStyle : this.props.floatingLabelStyle
           }
-          floating={this.state.focus || this.props.hintText || this.state.text.length}>
-          {this.props.floatingLabelText}
-          {this.props.required ? '*' : ''}
+          floating={
+            this.state.focus
+            || this.props.hintText
+            || this.props.value
+            || this.state.text.length}>
+          {!this.props.required &&
+            <React.Fragment>
+              {this.props.floatingLabelText}
+            </React.Fragment>
+          }
+          {this.props.required &&
+            <React.Fragment>
+              <Required>*</Required>
+              {' '}
+              {this.props.floatingLabelText}
+            </React.Fragment>
+          }
           {/* <RequiredStar
             hasBeenFocused={this.state.hasBeenFocused}
             show={this.props.required}
@@ -177,19 +197,23 @@ class TextFieldComponent extends PureComponent {
           show={!this.props.defaultValue && !this.state.text.length && !this.props.value}>
           {this.props.hintText}
         </HintText>
-        {this.props.helperText && (
+        {this.props.helperText && !hasError && (
           <HelperText
             className="smc-text-field-helper-text"
             helperTextStyle={this.props.helperTextStyle}
             show={!this.state.error && (this.props.helperTextPersistent ? true : this.state.focus)}>
-            {this.props.helperText}
+            <React.Fragment>
+              {this.props.helperText}
+            </React.Fragment>
           </HelperText>
         )}
         <ErrorText
           show={hasError}
           className="smc-text-field-error-text"
           errorTextStyle={this.props.errorTextStyle}>
-          {this.props.errorText}
+          <React.Fragment>
+            {this.props.errorText}
+          </React.Fragment>
         </ErrorText>
         <UnderlineFocus
           disabled={this.props.focusDisabled}
@@ -240,6 +264,10 @@ class TextFieldComponent extends PureComponent {
     );
   }
 }
+
+const Required = styled.span`
+  color: ${props => props.theme.colors.required};
+`;
 
 const primaryTextColor = css`
   ${props => props.theme.textColors.primary};
