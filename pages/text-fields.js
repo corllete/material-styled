@@ -23,7 +23,13 @@ class TextFieldPage extends PureComponent {
     controlledInputValue: '',
   };
 
+  onClick = () => {
+    console.log(this.input); // eslint-disable-line
+  }
+
+  setRef = (ref) => { this.input = ref; }
   handleChange = e => this.setState({ controlledInputValue: e.target.value });
+
 
   render() {
     return (
@@ -87,6 +93,13 @@ class TextFieldPage extends PureComponent {
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Ei-sc-github.svg/768px-Ei-sc-github.svg.png" />
               </div>
             } />
+
+          <h2>Input ref</h2>
+          <TextFieldWithBottomMargin
+            helperTextPersistent
+            helperText="See console log onClick"
+            onClick={this.onClick}
+            innerInputRef={this.setRef} />
           <h2>Text areas</h2>
           <TextFieldWithBottomMargin
             textarea
