@@ -59,6 +59,7 @@ class TextFieldComponent extends PureComponent {
     onClick: PropTypes.func,
     onKeyDown: PropTypes.func,
     validator: PropTypes.func,
+    innerRef: PropTypes.func,
 
     /* Error related */
     error: PropTypes.bool,
@@ -102,6 +103,7 @@ class TextFieldComponent extends PureComponent {
     onClick: null,
     onKeyDown: null,
     validator: null,
+    innerRef: null,
     error: false,
     errorText: null,
     errorTextStyle: '',
@@ -150,7 +152,10 @@ class TextFieldComponent extends PureComponent {
     if (!this.props.disabled && this.props.onKeyDown) this.props.onKeyDown(e);
   };
 
-  setRef = (ref) => { this.textArea = ref; }
+  setRef = (ref) => {
+    this.textArea = ref;
+    if (this.props.innerRef) this.props.innerRef(ref);
+  }
 
   textArea = null;
 
@@ -264,6 +269,7 @@ class TextFieldComponent extends PureComponent {
               onClick={this.onClick}
               onKeyDown={this.onKeyDown}
               name={this.props.name}
+              innerRef={this.props.innerRef}
               className="smc-text-field-input" />
           )
         }
