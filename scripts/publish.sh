@@ -4,9 +4,9 @@ if [[ ! -z "$1" ]]; then
   update_type="$1"
 fi
 
-if [[ ! -z "$2" ]]; then
-  version="$2"
-fi
+# if [[ ! -z "$2" ]]; then
+#   version="$2"
+# fi
 
 echo
 if [[ ! "$update_type" =~ ^(patch|minor|major)$ ]]; then
