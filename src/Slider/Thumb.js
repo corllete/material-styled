@@ -23,6 +23,7 @@ const getThumbBorderSize = (props) => {
 };
 
 const Thumb = styled.div`
+  position: relative;
   height: ${getThumbSize}px;
   width: ${getThumbSize}px;
   border: ${getThumbBorderSize}px solid ${getThumbBorderColor};

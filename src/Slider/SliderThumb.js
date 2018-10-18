@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import FocusRing from './FocusRing';
 import Thumb from './Thumb';
 import SliderDisabledWrapper from './SliderDisabledWrapper';
+import FloatingText from './FloatingText';
 
 class SliderThumbComponent extends PureComponent {
   static propTypes = {
@@ -12,11 +13,13 @@ class SliderThumbComponent extends PureComponent {
     handleMouseMove: PropTypes.func.isRequired,
     increment: PropTypes.func.isRequired,
     decrement: PropTypes.func.isRequired,
+    floatingText: PropTypes.node,
     className: PropTypes.string.isRequired,
   }
 
   static defaultProps = {
     disabled: false,
+    floatingText: null,
   }
 
   state = {
@@ -69,7 +72,7 @@ class SliderThumbComponent extends PureComponent {
   }
 
   render() {
-    const { atMin, disabled } = this.props;
+    const { atMin, disabled, floatingText } = this.props;
     const { navigatingWithKeys, dragging } = this.state;
     return (
       <div ref={this.getThumb} className={this.props.className}>
@@ -85,6 +88,7 @@ class SliderThumbComponent extends PureComponent {
             atMin={atMin}
             disabled={disabled}>
             <FocusRing navigatingWithKeys={navigatingWithKeys} atMin={atMin} />
+            {floatingText && <FloatingText>{floatingText}</FloatingText>}
           </Thumb>
         </SliderDisabledWrapper>
       </div>

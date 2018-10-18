@@ -31,6 +31,7 @@ class SliderTrackComponent extends PureComponent {
     increment: PropTypes.func,
     decrement: PropTypes.func,
     className: PropTypes.string.isRequired,
+    floatingText: PropTypes.node,
   }
 
   static defaultProps = {
@@ -38,6 +39,7 @@ class SliderTrackComponent extends PureComponent {
     disabled: false,
     increment: null,
     decrement: null,
+    floatingText: null,
   }
 
   state = {
@@ -124,7 +126,7 @@ class SliderTrackComponent extends PureComponent {
   disableFocus = () => this.setState({ focused: false });
 
   render() {
-    const { value, min, disabled } = this.props;
+    const { value, min, disabled, floatingText } = this.props;
     const { pixelsPerValue, valuePerPixel, focused, width } = this.state;
     const haveMeasuredWidth = typeof pixelsPerValue === 'number'
       && typeof valuePerPixel === 'number';
@@ -147,6 +149,7 @@ class SliderTrackComponent extends PureComponent {
                 <TrackValue disabled={disabled} width={width} />
               </ValueTrack>,
               <SliderThumb
+                floatingText={floatingText}
                 increment={this.props.increment}
                 decrement={this.props.decrement}
                 handleMouseMove={this.handleClick}

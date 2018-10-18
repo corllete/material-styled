@@ -39,6 +39,10 @@ class SlidersPageComponent extends PureComponent {
     this.setState(({ disabled }) => ({ disabled: !disabled }));
   }
 
+  formatFloatingValue = value => (
+    <div style={{ marginTop: 30 }}>{value}лв</div>
+  )
+
   render() {
     const { disabled } = this.state;
     return (
@@ -62,6 +66,18 @@ class SlidersPageComponent extends PureComponent {
                     max={10}
                     step={2}
                     initialValue={5}
+                    disabled={disabled} />
+                </div>
+              </div>
+              <div>
+                <h3>Floating Label</h3>
+                <div className={this.props.className} style={{ width: '250px' }}>
+                  <Slider
+                    min={0}
+                    max={10}
+                    step={2}
+                    initialValue={5}
+                    formatFloatingValue={this.formatFloatingValue}
                     disabled={disabled} />
                 </div>
               </div>

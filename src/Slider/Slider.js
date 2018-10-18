@@ -22,6 +22,7 @@ class SliderComponent extends PureComponent {
     value: PropTypes.number,
     className: PropTypes.string.isRequired,
     handleValueChange: PropTypes.func,
+    formatFloatingValue: PropTypes.func,
   }
 
   static defaultProps = {
@@ -32,6 +33,7 @@ class SliderComponent extends PureComponent {
     disabled: false,
     initialValue: null,
     handleValueChange: null,
+    formatFloatingValue: null,
     value: null,
   }
 
@@ -78,11 +80,12 @@ class SliderComponent extends PureComponent {
 
 
   render() {
-    const { min, max, step } = this.state;
-    const { continuous } = this.props;
+    const { min, max, step, value } = this.state;
+    const { continuous, formatFloatingValue } = this.props;
     const propsValue = this.props.value;
     const stateValue = this.state.value;
     const valueFromCorrectSource = valueIsValid(propsValue) ? propsValue : stateValue;
+    const FloatingText = formatFloatingValue ? formatFloatingValue(value) : null;
     return (
       <div className={`${this.props.className} smc-slider`}>
         <SliderTrack
@@ -94,6 +97,7 @@ class SliderComponent extends PureComponent {
           increment={this.increment}
           decrement={this.decrement}
           setValue={this.setValue}
+          floatingText={FloatingText}
           disabled={this.props.disabled} />
       </div>
     );
