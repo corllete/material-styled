@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const rippleAnimation = keyframes`
   to {
@@ -10,7 +10,7 @@ const rippleAnimation = keyframes`
 `;
 
 const withRipple = (ComposedComponent) => {
-  const RippledComponent = ComposedComponent.extend`
+  const RippledComponent = styled(ComposedComponent)`
     position: relative;
     overflow: hidden;
 

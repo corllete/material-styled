@@ -1,10 +1,19 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
 import Slider from '../src/Slider';
 import Button from '../src/Button';
 
 class ControlledSlider extends PureComponent {
+  static propTypes = {
+    initialValue: PropTypes.number,
+  }
+
+  static defaultProps = {
+    initialValue: null,
+  }
+
   state = {
     value: this.props.initialValue,
   };
@@ -24,13 +33,17 @@ class ControlledSlider extends PureComponent {
   }
 }
 
-const SliderNoFill = Slider.extend`
-  & .styled-material-thumb {
-    background: #fff;
-  }
-`;
+// const SliderNoFill = styled(Slider)`
+//   & .styled-material-thumb {
+//     background: #fff;
+//   }
+// `;
 
 class SlidersPageComponent extends PureComponent {
+  static propTypes = {
+    className: PropTypes.string.isRequired,
+  }
+
   state = {
     disabled: false,
   };

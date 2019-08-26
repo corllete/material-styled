@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import typography from './mixins/typography';
@@ -27,17 +27,13 @@ const Title = styled(TitleComponent)`
    ${typography('title')}
 `;
 
-class AppbarComponent extends PureComponent {
-  render() {
-    return (
-      <div
-        className={`${this.props.className} smc-appbar-container`}>
-        {this.props.navIcon ? <this.props.navIcon /> : <NavIconPlaceholder />}
-        <Title>{`${this.props.title}`}</Title>
-      </div>
-    );
-  }
-}
+const AppbarComponent = ({ className, navIcon, title }) => (
+  <div
+    className={`${className} smc-appbar-container`}>
+    {navIcon ? <navIcon /> : <NavIconPlaceholder />}
+    <Title>{`${title}`}</Title>
+  </div>
+);
 
 AppbarComponent.propTypes = {
   className: PropTypes.string.isRequired,

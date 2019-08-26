@@ -1,6 +1,7 @@
 node_modules
 .next
 lib
+dev
 docs
 logs
 *.log

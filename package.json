@@ -5,15 +5,15 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "yarn lint",
-    "clear": "rm -rf lib/*",
-    "build": "yarn clear && babel --out-dir lib src",
-    "build:prod": "yarn clear && cross-env NODE_ENV=production babel --out-dir lib src",
+    "clear": "rm -rf lib",
+    "clear:dev": "rm -rf dev",
+    "build": "yarn clear:dev && babel src --out-dir dev",
+    "build:prod": "yarn clear && cross-env NODE_ENV=production babel src --out-dir lib",
     "lint": "eslint src/**",
-    "dev": "cross-env NODE_ENV=development next dev -p 8081",
-    "export": "next build && next export -o docs",
-    "now-build": "yarn export && cd docs && now",
     "prepush": "yarn lint",
-    "contributor": "bash ./scripts/update-authors.sh"
+    "contributor": "bash ./scripts/update-authors.sh",
+    "dev": "start-storybook -p 8081",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -28,19 +28,19 @@
     "lodash.merge": "^4.6.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^5.1.11",
+    "@storybook/addon-links": "^5.1.11",
+    "@storybook/addons": "^5.1.11",
+    "@storybook/react": "^5.1.11",
     "babel-eslint": "^8.0.2",
-    "babel-plugin-styled-components": "^1.5.0",
-    "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-export-extensions": "^6.22.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-react-constant-elements": "^6.23.0",
-    "babel-plugin-transform-react-inline-elements": "^6.22.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
-    "babel-plugin-transform-regenerator": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-styled-components": "^1.10.6",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "cross-env": "^5.1.3",
     "eslint": "^4.10.0",
     "eslint-config-airbnb": "^16.1.0",
@@ -51,17 +51,15 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
     "husky": "^0.14.3",
-    "next": "^4.1.4",
-    "now": "^9.0.1",
     "prop-types": "^15.6.1",
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0",
-    "styled-components": "^3.1.6"
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "styled-components": "^4.3.2"
   },
   "peerDependencies": {
-    "prop-types": "^15.6.1",
-    "react": ">= 16 < 17",
-    "react-dom": ">= 16 < 17",
-    "styled-components": "^3.0"
+    "prop-types": ">= 15",
+    "react": ">= 16.8",
+    "react-dom": ">= 16.8",
+    "styled-components": ">= 3"
   }
 }

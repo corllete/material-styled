@@ -426,14 +426,14 @@ const inputStyles = `
  * Since these styles depend on props, they can't live in the template literal
  * above
  */
-const Input = styled.input`${inputStyles}`.extend`
+const Input = styled(styled.input`${inputStyles}`)`
   width: calc(100% - ${({ hasSuffix }) => (hasSuffix ? 1 : 0)}em);
   color: ${primaryTextColor};
   padding-left: ${props => (props.hasPrefix ? '1em' : '0')};
   ${props => props.inputStyle};
 `;
 
-const Area = styled.textarea`${inputStyles}`.extend`
+const Area = styled(styled.textarea`${inputStyles}`)`
   width: calc(100% - ${({ hasSuffix }) => (hasSuffix ? 1 : 0)}em);
   height:  ${props => props.height - 4}px;
   color: ${primaryTextColor};

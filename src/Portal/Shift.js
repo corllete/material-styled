@@ -18,11 +18,11 @@ class Shift extends Component {
     document.body.classList.add('shift');
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.open && !this.props.open) {
-      document.body.classList.add(this.props.direction);
-    } else if (!nextProps.open && this.props.open) {
-      document.body.classList.remove(this.props.direction);
+  componentDidUpdate(prevProps) {
+    if (this.props.open && !prevProps.open) {
+      document.body.classList.add(prevProps.direction);
+    } else if (!this.props.open && prevProps.open) {
+      document.body.classList.remove(prevProps.direction);
     }
   }
 

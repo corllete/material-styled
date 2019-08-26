@@ -1,15 +1,16 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
 import TextField from '../src/TextField';
 
 const validateLength = str => str.length > 7;
 
-const TextFieldWithBottomMargin = TextField.extend`
+const TextFieldWithBottomMargin = styled(TextField)`
   margin-bottom: 20px;
 `;
 
-const TextFieldWithStyledPrefixAndSuffix = TextFieldWithBottomMargin.extend`
+const TextFieldWithStyledPrefixAndSuffix = styled(TextFieldWithBottomMargin)`
   > .smc-textfield-suffix {
     color: purple;
   }
@@ -19,6 +20,10 @@ const TextFieldWithStyledPrefixAndSuffix = TextFieldWithBottomMargin.extend`
 `;
 
 class TextFieldPage extends PureComponent {
+  static propTypes = {
+    className: PropTypes.string.isRequired,
+  }
+
   state = {
     controlledInputValue: '',
   };

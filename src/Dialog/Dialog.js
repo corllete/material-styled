@@ -17,9 +17,9 @@ class DialogComponent extends Component {
     open: this.props.open,
   };
 
-  componentWillReceiveProps(nextProps) {
-    const nextOpen = Boolean(nextProps.open);
-    const prevOpen = Boolean(this.props.open);
+  componentDidUpdate(prevProps) {
+    const nextOpen = Boolean(this.props.open);
+    const prevOpen = Boolean(prevProps.open);
     if (prevOpen !== nextOpen) {
       this.setState({ open: nextOpen });
       return;

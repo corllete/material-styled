@@ -44,6 +44,7 @@ module.exports = {
     ],
 
     // React
+    'react/no-did-update-set-state': false,
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/forbid-prop-types': [1, { forbid: ['any']} ],
     'react/prefer-stateless-function': [2, { ignorePureComponents: true }],

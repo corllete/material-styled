@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Button from '../src/Button';
 import {
@@ -13,7 +14,7 @@ import {
 } from '../src/Card';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
 
-const DemoCard = Card.extend`
+const DemoCard = styled(Card)`
   max-width: 21.875rem;
   margin-bottom: 48px;
 
@@ -143,6 +144,10 @@ const CardsPage = ({ className }) => (
     </div>
   </MaterialThemeProvider>
 );
+
+CardsPage.propTypes = {
+  className: PropTypes.string.isRequired,
+};
 
 const StyledCardsPage = styled(CardsPage)`
 

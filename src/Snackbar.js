@@ -54,8 +54,8 @@ class SnackbarComponent extends PureComponent {
     animateOut: false,
   };
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.open && !this.props.open) {
+  componentDidUpdate(prevProps) {
+    if (this.props.open && !prevProps.open) {
       if (this.delayedCloseTimer) {
         clearTimeout(this.delayedCloseTimer);
         this.delayedCloseTimer = null;
@@ -65,10 +65,19 @@ class SnackbarComponent extends PureComponent {
         // start auto-dismissal counter after snackbar is opened
         this.setState({ animateOut: true });
         // run onRequestClose, delayed by animation timing
-        setTimeout(this.props.onRequestClose, 300);
-      }, this.props.autoHideDuration);
-    } else {
+        this.requestCloseTimer = setTimeout(prevProps.onRequestClose, 300);
+      }, prevProps.autoHideDuration);
+    } else if (!this.props.open && prevProps.open) {
       this.setState({ animateOut: false });
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.delayedCloseTimer) {
+      clearTimeout(this.delayedCloseTimer);
+    }
+    if (this.requestCloseTimer) {
+      clearTimeout(this.requestCloseTimer);
     }
   }
 
