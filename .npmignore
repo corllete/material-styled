@@ -4,4 +4,9 @@ node_modules
 src
 dev
 .storybook
+.babelrc
+.eslintignore
+.eslintrc
+.nojekyl
 stories
+scripts
