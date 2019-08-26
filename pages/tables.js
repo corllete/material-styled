@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import MaterialThemeProvider from '../src/theme/ThemeProvider';
 import Table from '../src/Table';
 
@@ -41,7 +42,7 @@ const data = [
   },
 ];
 
-const StyledTable = Table.extend`
+const StyledTable = styled(Table)`
   .smc-table-datum-price {
     color: red;
   }
