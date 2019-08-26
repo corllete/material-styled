@@ -123,13 +123,13 @@ class TextFieldComponent extends PureComponent {
     if (this.props.onChangeValue) this.props.onChangeValue(text, this.props.name);
     const isInvalid = this.props.validator && !this.props.validator(text);
     const isEmptyButRequired = this.props.required ? !text : false;
-    const newHeight = this.props.textarea ? this.textArea.scrollHeight : '';
+    const newHeight = this.props.textarea ? this.textArea.current.scrollHeight : '';
 
     this.setState({
       text,
       error: this.props.error || isInvalid || isEmptyButRequired,
       errorValidate: isInvalid || isEmptyButRequired,
-      height: !this.props.multiline || (this.textArea || {}).value === '' ? '100%' : newHeight,
+      height: !this.props.multiline || (this.textArea.current || {}).value === '' ? '100%' : newHeight,
     });
   };
 
@@ -152,11 +152,7 @@ class TextFieldComponent extends PureComponent {
     if (!this.props.disabled && this.props.onKeyDown) this.props.onKeyDown(e);
   };
 
-  setRef = (ref) => {
-    this.textArea = ref;
-  }
-
-  textArea = null;
+  textArea = React.createRef()
 
   render() {
     const hasError = Boolean(
@@ -249,7 +245,7 @@ class TextFieldComponent extends PureComponent {
               onClick={this.onClick}
               className="smc-text-field-area"
               name={this.props.name}
-              innerRef={this.setRef} />
+              ref={this.textArea} />
           )
           : (
             <Input
@@ -268,7 +264,7 @@ class TextFieldComponent extends PureComponent {
               onClick={this.onClick}
               onKeyDown={this.onKeyDown}
               name={this.props.name}
-              innerRef={this.props.innerInputRef}
+              ref={this.props.innerInputRef}
               className="smc-text-field-input" />
           )
         }

@@ -42,23 +42,25 @@ class TabsComponent extends PureComponent {
     passiveFontColor: '',
   }
 
-  constructor(props) {
-    super(props);
+  state = {
+    selectedIndex: 0,
+    tabs: [],
+    numTabs: 0,
+  }
+
+  componentDidMount() {
     const tabs = [];
-    Children.forEach(props.children, (tab) => {
+    Children.forEach(this.props.children, (tab) => {
       if (isValidElement(tab)) {
         tabs.push(tab);
       }
     });
     const numTabs = tabs.length;
-    this.state = {
+    this.setState({
       selectedIndex: 0,
       tabs,
       numTabs,
-    };
-  }
-
-  componentDidMount() {
+    });
     window.addEventListener('resize', this.setTabWidth);
     this.setTabWidth();
   }
@@ -70,11 +72,13 @@ class TabsComponent extends PureComponent {
   setTabWidth = () => {
     const tabWidth =
       this.props.width ||
-      parseInt(this.tabs.getBoundingClientRect().width / this.state.numTabs, 10);
+      parseInt(this.tabs.current.getBoundingClientRect().width / this.state.numTabs, 10);
     this.setState({ tabWidth }); // eslint-disable-line 
   }
 
   getSelected = index => this.state.selectedIndex === index;
+
+  tabs = React.createRef()
 
   updateSelectedIndex = selectedIndex => this.setState({ selectedIndex });
 
@@ -99,7 +103,7 @@ class TabsComponent extends PureComponent {
 
     return (
       // eslint-disable-next-line
-      <TabsContainer innerRef={node => this.tabs = node} className='smc-tab-bar'>
+      <TabsContainer ref={this.tabs} className='smc-tab-bar'>
         <TabNavigationContainer className="smc-tab-navigation-container">
           {tabNavigation}
         </TabNavigationContainer>
