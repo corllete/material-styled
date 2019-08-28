@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { injectGlobal, css } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
 import classNames from 'classnames';
 import elevation from './mixins/elevation';
 import Portal from './Portal';
@@ -9,8 +9,7 @@ const drawerSizing = css`
   width: 240px;
 `;
 
-// eslint-disable-next-line no-unused-expressions
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   body {
     &.shift {
       &.right {
@@ -111,19 +110,22 @@ const Drawer = ({
   temporary,
   attachment,
 }) => (
-  <Portal
-    open={open}
-    shift={!temporary}
-    attachment={attachment}
-    onRequestClose={handleRequestClose}
-    renderContents={() => (
-      <StyledDrawer
-        attachment={attachment}
-        open={open}
-        temporary={temporary}>
-        {children}
-      </StyledDrawer>
+  <React.Fragment>
+    <GlobalStyle />
+    <Portal
+      open={open}
+      shift={!temporary}
+      attachment={attachment}
+      onRequestClose={handleRequestClose}
+      renderContents={() => (
+        <StyledDrawer
+          attachment={attachment}
+          open={open}
+          temporary={temporary}>
+          {children}
+        </StyledDrawer>
     )} />
+  </React.Fragment>
 );
 
 Drawer.propTypes = {

@@ -22,3 +22,5 @@ export { default as withRipple } from './mixins/ripple';
 
 export { default as ThemeProvider } from './theme/ThemeProvider';
 export { default as defaultTheme } from './theme/defaultTheme';
+export { default as GlobalStyle } from './theme/injectGlobal';
+export * from './theme/colors';

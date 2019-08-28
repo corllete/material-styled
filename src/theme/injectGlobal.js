@@ -1,7 +1,7 @@
-import { injectGlobal } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 /* eslint-disable no-unused-expressions */
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
@@ -11,3 +11,6 @@ injectGlobal`
     font-family: Roboto,sans-serif;
   }
 `;
+
+export default GlobalStyle;
+

@@ -1,6 +1,6 @@
 {
   "name": "@corllete/material-styled",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Styled Components implementation of Material Design",
   "main": "lib/index.js",
   "scripts": {
@@ -63,6 +63,6 @@
     "prop-types": ">= 15",
     "react": ">= 16.8",
     "react-dom": ">= 16.8",
-    "styled-components": ">= 3"
+    "styled-components": ">= 4"
   }
 }
