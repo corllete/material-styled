@@ -35,9 +35,9 @@ const mini = css`
   width: 40px;
 `;
 
-const FloatingActionButton = styled.button.attrs({
+const FloatingActionButton = styled.button.attrs(() => ({
   'data-smc': 'FloatingActionButton',
-})`
+}))`
   color: #fff;
   width: 56px;
   height: 56px;

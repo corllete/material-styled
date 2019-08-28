@@ -36,9 +36,9 @@ const raised = css`
   `}
 `;
 
-const Button = styled.button.attrs({
+const Button = styled.button.attrs(() => ({
   'data-smc': 'Button',
-})`
+}))`
   color: black;
   display: inline-block;
   position: relative;
